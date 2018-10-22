@@ -1,0 +1,57 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1;
+    background-color: lightblue;
+}
+
+.container{
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.delete{
+    width: 35px;
+    height: 25px;
+    background: red;
+    display: inline-block;
+    margin-left: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    float: right;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.add{
+    width: 35px;
+    height: 25px;
+    background: lightgreen;
+    display: inline-block;
+    margin-left: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    float: right;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.edit{
+    width: 35px;
+    height: 25px;
+    background-image: url("/img/edit.png");
+    display: inline-block;
+    margin-left: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    float: right;
+    font-weight: 900;
+    cursor: pointer;
+}
