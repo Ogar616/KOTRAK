@@ -9,9 +9,9 @@ class Section extends React.Component {
                 {index: 1, firstName: "Adam", lastName: "Adamowicz", city: "Katowice", country: "Polska", sex: "Mężczyzna"},
                 {index: 2, firstName: "Anna", lastName: "Malinowska", city: "Gliwice", country: "Polska", sex: "Kobieta"}],
             newUser: {index: "", firstName: "", lastName: "", city: "", country: "", sex: ""},
-            showUser: null,
-            addUser: null,
-            editUser: null
+            showUser: false,
+            showAddUser: false,
+            showEditUser: false
         };
         this.setName = this.setName.bind(this);
     }
@@ -50,6 +50,36 @@ class Section extends React.Component {
         </form>
     </div>);
 
+    editForm = (<div>
+        <form>
+            <div className="form-group" onSubmit={this.handleSubmit}>
+                <label>Imię</label>
+                <input className="form-control form-control-lg" type="text" placeholder="EDITTTTTT"  onChange={() => this.setName}></input>
+            </div>
+            <div className="form-group">
+                <label>Nazwisko</label>
+                <input className="form-control form-control-lg" type="text" placeholder="Wpisz nazwisko" ></input>
+
+            </div>
+            <div className="form-group">
+                <label>Wybierz płeć</label>
+                <select className="form-control" >
+                    <option>Mężczyzna</option>
+                    <option>Kobieta</option>
+                </select>
+            </div>
+            <div className="form-group">
+                <label>Miasto</label>
+                <input className="form-control form-control-lg" type="text" placeholder="Wpisz miasto" ></input>
+            </div>
+            <div className="form-group">
+                <label>Kraj</label>
+                <input className="form-control form-control-lg" type="text" placeholder="Wpisz państwo" ></input>
+            </div>
+            <button type="submit" className="btn btn-primary">Dodaj</button>
+        </form>
+    </div>);
+
     handleSubmit = () => {
         event.preventDefault();
     };
@@ -61,11 +91,15 @@ class Section extends React.Component {
         this.setState({users: users});
     };
 
+    showAddForm = () => {
+
+        this.setState({showAddUser: this.state.showAddUser === true ? false : true, showUser: false, showEditUser: false})
+
+    };
+
     addUser = (firstName, lastName, city, country, sex) => {
         let users = this.state.users;
         users.push({firstName: firstName, lastName: lastName, city: city, country: country, sex: sex});
-        this.setState({users: users})
-
     };
 
     editUser = (firstName, lastName, city, country, sex, i) => {
@@ -73,16 +107,11 @@ class Section extends React.Component {
 
     };
 
+    showEditForm = () => {
+        this.setState({showEditUser: this.state.showEditUser === true ? false : true, showAddUser: false, showUser: false})
+    };
+
     showUserInfo = (index) => {
-        const user = (<tr>
-            <td key={this.state.users[index].index}>{this.state.users[index].index}</td>
-            <td>{this.state.users[index].firstName.toUpperCase()}</td>
-            <td>{this.state.users[index].lastName}</td>
-            <td>{this.state.users[index].city}</td>
-            <td>{this.state.users[index].country}</td>
-            <td>{this.state.users[index].sex}</td>
-            <td>forecast</td>
-        </tr>);
 
         this.info = (<div className="table-responsive">
             <table className="table">
@@ -98,15 +127,38 @@ class Section extends React.Component {
                 </tr>
                 </thead>
                 <tbody>
-                {user}
+                <tr>
+                    <td key={this.state.users[index].index}>{this.state.users[index].index}</td>
+                    <td>{this.state.users[index].firstName.toUpperCase()}</td>
+                    <td>{this.state.users[index].lastName}</td>
+                    <td>{this.state.users[index].city}</td>
+                    <td>{this.state.users[index].country}</td>
+                    <td>{this.state.users[index].sex}</td>
+                    <td>forecast</td>
+                </tr>
                 </tbody>
             </table>
         </div>);
-        this.setState({showUser: this.state.users[index].index, addUser: null, editUser: null})
+        this.setState({showUser: this.state.showUser === true ? false : true, addUser: null, showEditUser: null})
     };
 
     render() {
+        let showedForm = null;
+        let showInfo = null;
+
+        if (this.state.showUser !== false){
+            showInfo = this.info;
+        }
+
+        if (this.state.showAddUser !== false){
+            showedForm = this.addForm;
+        }
+        if (this.state.showEditUser !== false){
+            showedForm = this.editForm;
+        }
+
         const { users } = this.state;
+
         return (
             <div className="container">
                 <div className="list-group">
@@ -114,16 +166,16 @@ class Section extends React.Component {
                         Lista użytkowników
                     </div>
                     {users.map((u, i) => (
-                            <div className="list-group-item list-group-item-action" key={u.index}>{u.firstName + " " + u.lastName}
-                                <button type="button" className="info" onClick={() => this.showUserInfo(i)}>Info</button>
-                                <button type="button" className="edit">edycja</button>
+                            <div className="list-group-item list-group-item-action" key={i}>{u.firstName + " " + u.lastName}
+                                <button type="button" className="info" onClick={() => this.showUserInfo(i)}>info</button>
+                                <button type="button" className="edit" onClick={() => this.showEditForm(i)}>edycja</button>
                                 <button type="button" className="delete" onClick={() => this.deleteUser(i)}>-</button>
                             </div>
                         ))}
-                    <div className="list-group-item list-group-item-action">Dodaj nowego użytkownika<button className="add" onClick={() => this.addUser}>+</button></div>
+                    <div className="list-group-item list-group-item-action">Dodaj nowego użytkownika<button className="add" onClick={() => this.showAddForm()}>+</button></div>
                 </div>
-                {this.info}
-                {this.addForm}
+                {showInfo}
+                {showedForm}
             </div>
         );
     }

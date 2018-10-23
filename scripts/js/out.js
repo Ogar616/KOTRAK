@@ -22504,6 +22504,84 @@ var Section = function (_React$Component) {
                 )
             )
         );
+        _this.editForm = _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(
+                "form",
+                null,
+                _react2.default.createElement(
+                    "div",
+                    { className: "form-group", onSubmit: _this.handleSubmit },
+                    _react2.default.createElement(
+                        "label",
+                        null,
+                        "Imi\u0119"
+                    ),
+                    _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: "EDITTTTTT", onChange: function onChange() {
+                            return _this.setName;
+                        } })
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "form-group" },
+                    _react2.default.createElement(
+                        "label",
+                        null,
+                        "Nazwisko"
+                    ),
+                    _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: "Wpisz nazwisko" })
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "form-group" },
+                    _react2.default.createElement(
+                        "label",
+                        null,
+                        "Wybierz p\u0142e\u0107"
+                    ),
+                    _react2.default.createElement(
+                        "select",
+                        { className: "form-control" },
+                        _react2.default.createElement(
+                            "option",
+                            null,
+                            "M\u0119\u017Cczyzna"
+                        ),
+                        _react2.default.createElement(
+                            "option",
+                            null,
+                            "Kobieta"
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "form-group" },
+                    _react2.default.createElement(
+                        "label",
+                        null,
+                        "Miasto"
+                    ),
+                    _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: "Wpisz miasto" })
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "form-group" },
+                    _react2.default.createElement(
+                        "label",
+                        null,
+                        "Kraj"
+                    ),
+                    _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: "Wpisz pa\u0144stwo" })
+                ),
+                _react2.default.createElement(
+                    "button",
+                    { type: "submit", className: "btn btn-primary" },
+                    "Dodaj"
+                )
+            )
+        );
 
         _this.handleSubmit = function () {
             event.preventDefault();
@@ -22515,56 +22593,25 @@ var Section = function (_React$Component) {
             _this.setState({ users: users });
         };
 
+        _this.showAddForm = function () {
+
+            _this.setState({ showAddUser: _this.state.showAddUser === true ? false : true, showUser: false, showEditUser: false });
+        };
+
         _this.addUser = function (firstName, lastName, city, country, sex) {
             var users = _this.state.users;
             users.push({ firstName: firstName, lastName: lastName, city: city, country: country, sex: sex });
-            _this.setState({ users: users });
         };
 
         _this.editUser = function (firstName, lastName, city, country, sex, i) {
             var users = _this.state.users;
         };
 
+        _this.showEditForm = function () {
+            _this.setState({ showEditUser: _this.state.showEditUser === true ? false : true, showAddUser: false, showUser: false });
+        };
+
         _this.showUserInfo = function (index) {
-            var user = _react2.default.createElement(
-                "tr",
-                null,
-                _react2.default.createElement(
-                    "td",
-                    { key: _this.state.users[index].index },
-                    _this.state.users[index].index
-                ),
-                _react2.default.createElement(
-                    "td",
-                    null,
-                    _this.state.users[index].firstName.toUpperCase()
-                ),
-                _react2.default.createElement(
-                    "td",
-                    null,
-                    _this.state.users[index].lastName
-                ),
-                _react2.default.createElement(
-                    "td",
-                    null,
-                    _this.state.users[index].city
-                ),
-                _react2.default.createElement(
-                    "td",
-                    null,
-                    _this.state.users[index].country
-                ),
-                _react2.default.createElement(
-                    "td",
-                    null,
-                    _this.state.users[index].sex
-                ),
-                _react2.default.createElement(
-                    "td",
-                    null,
-                    "forecast"
-                )
-            );
 
             _this.info = _react2.default.createElement(
                 "div",
@@ -22618,19 +22665,57 @@ var Section = function (_React$Component) {
                     _react2.default.createElement(
                         "tbody",
                         null,
-                        user
+                        _react2.default.createElement(
+                            "tr",
+                            null,
+                            _react2.default.createElement(
+                                "td",
+                                { key: _this.state.users[index].index },
+                                _this.state.users[index].index
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                null,
+                                _this.state.users[index].firstName.toUpperCase()
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                null,
+                                _this.state.users[index].lastName
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                null,
+                                _this.state.users[index].city
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                null,
+                                _this.state.users[index].country
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                null,
+                                _this.state.users[index].sex
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                null,
+                                "forecast"
+                            )
+                        )
                     )
                 )
             );
-            _this.setState({ showUser: _this.state.users[index].index, addUser: null, editUser: null });
+            _this.setState({ showUser: _this.state.showUser === true ? false : true, addUser: null, showEditUser: null });
         };
 
         _this.state = {
             users: [{ index: 0, firstName: "Kamil", lastName: "Sobczyk", city: "Zabrze", country: "Polska", sex: "Mężczyzna" }, { index: 1, firstName: "Adam", lastName: "Adamowicz", city: "Katowice", country: "Polska", sex: "Mężczyzna" }, { index: 2, firstName: "Anna", lastName: "Malinowska", city: "Gliwice", country: "Polska", sex: "Kobieta" }],
             newUser: { index: "", firstName: "", lastName: "", city: "", country: "", sex: "" },
-            showUser: null,
-            addUser: null,
-            editUser: null
+            showUser: false,
+            showAddUser: false,
+            showEditUser: false
         };
         _this.setName = _this.setName.bind(_this);
         return _this;
@@ -22641,7 +22726,22 @@ var Section = function (_React$Component) {
         value: function render() {
             var _this2 = this;
 
+            var showedForm = null;
+            var showInfo = null;
+
+            if (this.state.showUser !== false) {
+                showInfo = this.info;
+            }
+
+            if (this.state.showAddUser !== false) {
+                showedForm = this.addForm;
+            }
+            if (this.state.showEditUser !== false) {
+                showedForm = this.editForm;
+            }
+
             var users = this.state.users;
+
 
             return _react2.default.createElement(
                 "div",
@@ -22657,18 +22757,20 @@ var Section = function (_React$Component) {
                     users.map(function (u, i) {
                         return _react2.default.createElement(
                             "div",
-                            { className: "list-group-item list-group-item-action", key: u.index },
+                            { className: "list-group-item list-group-item-action", key: i },
                             u.firstName + " " + u.lastName,
                             _react2.default.createElement(
                                 "button",
                                 { type: "button", className: "info", onClick: function onClick() {
                                         return _this2.showUserInfo(i);
                                     } },
-                                "Info"
+                                "info"
                             ),
                             _react2.default.createElement(
                                 "button",
-                                { type: "button", className: "edit" },
+                                { type: "button", className: "edit", onClick: function onClick() {
+                                        return _this2.showEditForm(i);
+                                    } },
                                 "edycja"
                             ),
                             _react2.default.createElement(
@@ -22687,14 +22789,14 @@ var Section = function (_React$Component) {
                         _react2.default.createElement(
                             "button",
                             { className: "add", onClick: function onClick() {
-                                    return _this2.addUser;
+                                    return _this2.showAddForm();
                                 } },
                             "+"
                         )
                     )
                 ),
-                this.info,
-                this.addForm
+                showInfo,
+                showedForm
             );
         }
     }]);
