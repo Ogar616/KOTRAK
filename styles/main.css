@@ -34,7 +34,7 @@ body {
     background: lightgreen;
     display: inline-block;
     margin-left: 20px;
-    padding: 5px;
+    padding: 3px;
     border-radius: 10px;
     text-align: center;
     float: right;
@@ -70,6 +70,12 @@ body {
     cursor: pointer;
 }
 
-.table-responsive{
+form, .table-responsive{
     margin-top: 50px;
 }
+
+label{
+    font-size: 1.5em;
+}
+
+

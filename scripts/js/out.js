@@ -9618,15 +9618,15 @@ var _reactDom = __webpack_require__(99);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _nav = __webpack_require__(185);
+var _nav = __webpack_require__(189);
 
 var _nav2 = _interopRequireDefault(_nav);
 
-var _section = __webpack_require__(186);
+var _section = __webpack_require__(190);
 
 var _section2 = _interopRequireDefault(_section);
 
-var _footer = __webpack_require__(187);
+var _footer = __webpack_require__(191);
 
 var _footer2 = _interopRequireDefault(_footer);
 
@@ -22235,7 +22235,36 @@ module.exports = ReactDOMInvalidARIAHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 185 */
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */
+/***/ (function(module, exports) {
+
+//Konfiguracja Webpack
+
+module.exports = {
+    entry: "./scripts/js/app.jsx",
+    output: { filename: "./scripts/js/out.js" },
+    devServer: {
+        inline: true,
+        contentBase: './',
+        port: 3001
+    },
+    watch: true,
+    module: {
+        rules: [ {
+            test: /\.jsx$/,  exclude: /node_modules/,
+            loader: 'babel-loader',
+            query: { presets: ['es2015', 'stage-2', 'react'] }
+        }
+        ]
+    }
+};
+
+
+/***/ }),
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22361,7 +22390,7 @@ var Nav = function (_React$Component) {
 exports.default = Nav;
 
 /***/ }),
-/* 186 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22393,56 +22422,151 @@ var Section = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Section.__proto__ || Object.getPrototypeOf(Section)).call(this, props));
 
-        _this.componentDidMount = function () {
-            // this.listOfUsers = this.state.users.map(u => (<div className="list-group-item list-group-item-action" key={u.index}>{u.firstName + " " + u.lastName}<button type="button" className="info">Info</button><button type="button" className="edit" onClick={this.deleteUser(u.index)}>edycja</button><button type="button" className="delete">-</button></div>));
-            // this.showUserInfo();
-
+        _this.setName = function (event) {
+            _this.setState({ newUser: { firstName: event.target.value } });
         };
 
-        _this.showUserInfo = function () {
-            var users = _this.state.users.map(function (u) {
-                return _react2.default.createElement(
-                    "tr",
-                    null,
+        _this.addForm = _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(
+                "form",
+                null,
+                _react2.default.createElement(
+                    "div",
+                    { className: "form-group", onSubmit: _this.handleSubmit },
                     _react2.default.createElement(
-                        "td",
-                        { key: u.index },
-                        u.index
+                        "label",
+                        null,
+                        "Imi\u0119"
+                    ),
+                    _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: "Wpisz imi\u0119", onChange: function onChange() {
+                            return _this.setName;
+                        } })
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "form-group" },
+                    _react2.default.createElement(
+                        "label",
+                        null,
+                        "Nazwisko"
+                    ),
+                    _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: "Wpisz nazwisko" })
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "form-group" },
+                    _react2.default.createElement(
+                        "label",
+                        null,
+                        "Wybierz p\u0142e\u0107"
                     ),
                     _react2.default.createElement(
-                        "td",
-                        null,
-                        u.firstName
-                    ),
-                    _react2.default.createElement(
-                        "td",
-                        null,
-                        u.lastName
-                    ),
-                    _react2.default.createElement(
-                        "td",
-                        null,
-                        u.city
-                    ),
-                    _react2.default.createElement(
-                        "td",
-                        null,
-                        u.country
-                    ),
-                    _react2.default.createElement(
-                        "td",
-                        null,
-                        u.sex
-                    ),
-                    _react2.default.createElement(
-                        "td",
-                        null,
-                        "forecast"
+                        "select",
+                        { className: "form-control" },
+                        _react2.default.createElement(
+                            "option",
+                            null,
+                            "M\u0119\u017Cczyzna"
+                        ),
+                        _react2.default.createElement(
+                            "option",
+                            null,
+                            "Kobieta"
+                        )
                     )
-                );
-            });
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "form-group" },
+                    _react2.default.createElement(
+                        "label",
+                        null,
+                        "Miasto"
+                    ),
+                    _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: "Wpisz miasto" })
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "form-group" },
+                    _react2.default.createElement(
+                        "label",
+                        null,
+                        "Kraj"
+                    ),
+                    _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: "Wpisz pa\u0144stwo" })
+                ),
+                _react2.default.createElement(
+                    "button",
+                    { type: "submit", className: "btn btn-primary" },
+                    "Dodaj"
+                )
+            )
+        );
 
-            _this.table = _react2.default.createElement(
+        _this.handleSubmit = function () {
+            event.preventDefault();
+        };
+
+        _this.deleteUser = function (i) {
+            var users = _this.state.users;
+            users.splice(i, 1);
+            _this.setState({ users: users });
+        };
+
+        _this.addUser = function (firstName, lastName, city, country, sex) {
+            var users = _this.state.users;
+            users.push({ firstName: firstName, lastName: lastName, city: city, country: country, sex: sex });
+            _this.setState({ users: users });
+        };
+
+        _this.editUser = function (firstName, lastName, city, country, sex, i) {
+            var users = _this.state.users;
+        };
+
+        _this.showUserInfo = function (index) {
+            var user = _react2.default.createElement(
+                "tr",
+                null,
+                _react2.default.createElement(
+                    "td",
+                    { key: _this.state.users[index].index },
+                    _this.state.users[index].index
+                ),
+                _react2.default.createElement(
+                    "td",
+                    null,
+                    _this.state.users[index].firstName.toUpperCase()
+                ),
+                _react2.default.createElement(
+                    "td",
+                    null,
+                    _this.state.users[index].lastName
+                ),
+                _react2.default.createElement(
+                    "td",
+                    null,
+                    _this.state.users[index].city
+                ),
+                _react2.default.createElement(
+                    "td",
+                    null,
+                    _this.state.users[index].country
+                ),
+                _react2.default.createElement(
+                    "td",
+                    null,
+                    _this.state.users[index].sex
+                ),
+                _react2.default.createElement(
+                    "td",
+                    null,
+                    "forecast"
+                )
+            );
+
+            _this.info = _react2.default.createElement(
                 "div",
                 { className: "table-responsive" },
                 _react2.default.createElement(
@@ -22457,7 +22581,7 @@ var Section = function (_React$Component) {
                             _react2.default.createElement(
                                 "th",
                                 null,
-                                "#"
+                                "ID"
                             ),
                             _react2.default.createElement(
                                 "th",
@@ -22494,43 +22618,30 @@ var Section = function (_React$Component) {
                     _react2.default.createElement(
                         "tbody",
                         null,
-                        users
+                        user
                     )
                 )
             );
-        };
-
-        _this.deleteUser = function (i) {
-            var users = _this.state.users;
-            users.splice(i);
-            _this.setState({ users: users });
-        };
-
-        _this.addUser = function (firstName, lastName, city, country, sex) {
-            var users = _this.state.users;
-            users.push({ firstName: firstName, lastName: lastName, city: city, country: country, sex: sex });
-            _this.setState({ users: users });
-        };
-
-        _this.editUser = function (firstName, lastName, city, country, sex, i) {
-            var users = _this.state.users;
-            if (firstName) users[i].firstName = firstName;
-            if (lastName) users[i].lastName = lastName;
-            if (city) users[i].city = city;
-            if (country) users[i].country = country;
-            if (sex) users[i].sex = sex;
+            _this.setState({ showUser: _this.state.users[index].index, addUser: null, editUser: null });
         };
 
         _this.state = {
-            users: [{ index: 0, firstName: "Imię", lastName: "Nazwisko", city: "city", country: "country", sex: "sex" }, { index: 1, firstName: "user1", lastName: "userLast", city: "city", country: "country", sex: "sex" }, { index: 2, firstName: "user", lastName: "userLast", city: "city", country: "country", sex: "sex" }],
-            deleteAddEdit: 0
+            users: [{ index: 0, firstName: "Kamil", lastName: "Sobczyk", city: "Zabrze", country: "Polska", sex: "Mężczyzna" }, { index: 1, firstName: "Adam", lastName: "Adamowicz", city: "Katowice", country: "Polska", sex: "Mężczyzna" }, { index: 2, firstName: "Anna", lastName: "Malinowska", city: "Gliwice", country: "Polska", sex: "Kobieta" }],
+            newUser: { index: "", firstName: "", lastName: "", city: "", country: "", sex: "" },
+            showUser: null,
+            addUser: null,
+            editUser: null
         };
+        _this.setName = _this.setName.bind(_this);
         return _this;
     }
 
     _createClass(Section, [{
         key: "render",
         value: function render() {
+            var _this2 = this;
+
+            var users = this.state.users;
 
             return _react2.default.createElement(
                 "div",
@@ -22543,19 +22654,47 @@ var Section = function (_React$Component) {
                         { className: "list-group-item list-group-item-action active" },
                         "Lista u\u017Cytkownik\xF3w"
                     ),
-                    this.listOfUsers,
+                    users.map(function (u, i) {
+                        return _react2.default.createElement(
+                            "div",
+                            { className: "list-group-item list-group-item-action", key: u.index },
+                            u.firstName + " " + u.lastName,
+                            _react2.default.createElement(
+                                "button",
+                                { type: "button", className: "info", onClick: function onClick() {
+                                        return _this2.showUserInfo(i);
+                                    } },
+                                "Info"
+                            ),
+                            _react2.default.createElement(
+                                "button",
+                                { type: "button", className: "edit" },
+                                "edycja"
+                            ),
+                            _react2.default.createElement(
+                                "button",
+                                { type: "button", className: "delete", onClick: function onClick() {
+                                        return _this2.deleteUser(i);
+                                    } },
+                                "-"
+                            )
+                        );
+                    }),
                     _react2.default.createElement(
                         "div",
                         { className: "list-group-item list-group-item-action" },
                         "Dodaj nowego u\u017Cytkownika",
                         _react2.default.createElement(
-                            "div",
-                            { className: "add" },
+                            "button",
+                            { className: "add", onClick: function onClick() {
+                                    return _this2.addUser;
+                                } },
                             "+"
                         )
                     )
                 ),
-                this.table
+                this.info,
+                this.addForm
             );
         }
     }]);
@@ -22566,7 +22705,7 @@ var Section = function (_React$Component) {
 exports.default = Section;
 
 /***/ }),
-/* 187 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22610,32 +22749,6 @@ var Footer = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Footer;
-
-/***/ }),
-/* 188 */
-/***/ (function(module, exports) {
-
-//Konfiguracja Webpack
-
-module.exports = {
-    entry: "./scripts/js/app.jsx",
-    output: { filename: "./scripts/js/out.js" },
-    devServer: {
-        inline: true,
-        contentBase: './',
-        port: 3001
-    },
-    watch: true,
-    module: {
-        rules: [ {
-            test: /\.jsx$/,  exclude: /node_modules/,
-            loader: 'babel-loader',
-            query: { presets: ['es2015', 'stage-2', 'react'] }
-        }
-        ]
-    }
-};
-
 
 /***/ })
 /******/ ]);

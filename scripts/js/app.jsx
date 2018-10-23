@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Nav from "./Components/nav.jsx";
-import Section from "./Components/section.jsx";
-import Footer from "./Components/footer.jsx";
+import Nav from "./mainComponents/nav.jsx";
+import Section from "./mainComponents/section.jsx";
+import Footer from "./mainComponents/footer.jsx";
 
 class App extends React.Component{
     constructor(props) {
