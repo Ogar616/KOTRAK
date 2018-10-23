@@ -9641,10 +9641,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
 
-    function App() {
+    function App(props) {
         _classCallCheck(this, App);
 
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+        _this.state = {
+            nav: 'list'
+        };
+        return _this;
     }
 
     _createClass(App, [{
@@ -22399,46 +22404,73 @@ var Section = function (_React$Component) {
                     "div",
                     { className: "list-group" },
                     _react2.default.createElement(
-                        "button",
-                        { type: "button", className: "list-group-item list-group-item-action active" },
+                        "div",
+                        { className: "list-group-item list-group-item-action active" },
                         "Lista u\u017Cytkownik\xF3w"
                     ),
                     _react2.default.createElement(
-                        "button",
-                        { type: "button", className: "list-group-item list-group-item-action" },
+                        "div",
+                        { className: "list-group-item list-group-item-action" },
                         "user1",
-                        _react2.default.createElement("div", { className: "edit" }),
                         _react2.default.createElement(
-                            "div",
-                            { className: "delete" },
+                            "button",
+                            { type: "button", className: "info" },
+                            "Info"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { type: "button", className: "edit" },
+                            "edycja"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { type: "button", className: "delete" },
                             "-"
                         )
                     ),
                     _react2.default.createElement(
-                        "button",
-                        { type: "button", className: "list-group-item list-group-item-action" },
+                        "div",
+                        { className: "list-group-item list-group-item-action" },
                         "user2",
-                        _react2.default.createElement("div", { className: "edit" }),
                         _react2.default.createElement(
-                            "div",
-                            { className: "delete" },
+                            "button",
+                            { type: "button", className: "info" },
+                            "Info"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { type: "button", className: "edit" },
+                            "edycja"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { type: "button", className: "delete" },
                             "-"
                         )
                     ),
                     _react2.default.createElement(
-                        "button",
-                        { type: "button", className: "list-group-item list-group-item-action" },
+                        "div",
+                        { className: "list-group-item list-group-item-action" },
                         "user3",
-                        _react2.default.createElement("div", { className: "edit" }),
                         _react2.default.createElement(
-                            "div",
-                            { className: "delete" },
+                            "button",
+                            { type: "button", className: "info" },
+                            "Info"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { type: "button", className: "edit" },
+                            "edycja"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { type: "button", className: "delete" },
                             "-"
                         )
                     ),
                     _react2.default.createElement(
-                        "button",
-                        { type: "button", className: "list-group-item list-group-item-action" },
+                        "div",
+                        { className: "list-group-item list-group-item-action" },
                         "Dodaj nowego u\u017Cytkownika",
                         _react2.default.createElement(
                             "div",
@@ -22513,11 +22545,20 @@ module.exports = {
     output: { filename: "./scripts/js/out.js" },
     watch: true,
     module: {
-        loaders: [ {
+        rules: [ {
             test: /\.jsx$/,  exclude: /node_modules/,
             loader: 'babel-loader',
             query: { presets: ['es2015', 'react'] }
-        }
+        },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {}
+                    }
+                ]
+            }
         ]
     }
 };

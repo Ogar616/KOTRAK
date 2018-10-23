@@ -5,6 +5,13 @@ import Section from "./Components/section.jsx";
 import Footer from "./Components/footer.jsx";
 
 class App extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            nav: 'list'
+        }
+    }
+
     render() {
         return (
             <div>
