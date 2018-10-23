@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="33c1892a-5fe9-4e85-9782-bee56abfff51" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scripts/js/Components/section.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/js/Components/section.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scripts/js/out.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/js/out.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../styles/main.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,25 +65,29 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="221" />
+          <entry key="css" value="253" />
           <entry key="js" value="20" />
-          <entry key="jsx" value="1313" />
+          <entry key="json" value="8" />
+          <entry key="jsx" value="1770" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="221" />
-          <entry key="JSX Harmony" value="1313" />
+          <entry key="CSS" value="253" />
+          <entry key="JSON" value="8" />
+          <entry key="JSX Harmony" value="1770" />
           <entry key="JavaScript" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="js" value="1" />
+          <entry key="json" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="JSON" value="1" />
           <entry key="JavaScript" value="1" />
         </counts>
       </usages-collector>
@@ -101,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../scripts/js/app.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+            <state relative-caret-position="522">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -113,8 +119,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../scripts/js/Components/section.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+            <state relative-caret-position="162">
+              <caret line="8" column="228" selection-start-line="8" selection-start-column="228" selection-end-line="8" selection-end-column="228" />
             </state>
           </provider>
         </entry>
@@ -122,8 +128,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../styles/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+            <state relative-caret-position="1085">
+              <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -146,6 +152,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>delete</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -161,9 +172,10 @@
         <option value="$PROJECT_DIR$/scripts/js/app.jsx" />
         <option value="$PROJECT_DIR$/../scripts/js/Components/footer.jsx" />
         <option value="$PROJECT_DIR$/../scripts/js/Components/nav.jsx" />
+        <option value="$PROJECT_DIR$/../webpack.config.js" />
+        <option value="$PROJECT_DIR$/../package.json" />
         <option value="$PROJECT_DIR$/../styles/main.css" />
         <option value="$PROJECT_DIR$/../scripts/js/app.jsx" />
-        <option value="$PROJECT_DIR$/../webpack.config.js" />
         <option value="$PROJECT_DIR$/../scripts/js/Components/section.jsx" />
       </list>
     </option>
@@ -260,12 +272,12 @@
       <option name="presentableId" value="Default" />
       <updated>1540213946582</updated>
       <workItem from="1540213950219" duration="2615000" />
-      <workItem from="1540236654143" duration="12284000" />
+      <workItem from="1540236654143" duration="16447000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14899000" />
+    <option name="totallyTimeSpent" value="19062000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="83" y="592" width="1837" height="1053" extended-state="6" />
@@ -314,23 +326,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../styles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../scripts/js/app.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -345,10 +340,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../styles/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1085">
+          <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../scripts/js/app.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../scripts/js/Components/section.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        <state relative-caret-position="162">
+          <caret line="8" column="228" selection-start-line="8" selection-start-column="228" selection-end-line="8" selection-end-column="228" />
         </state>
       </provider>
     </entry>

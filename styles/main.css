@@ -69,3 +69,7 @@ body {
     font-weight: 400;
     cursor: pointer;
 }
+
+.table-responsive{
+    margin-top: 50px;
+}

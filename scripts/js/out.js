@@ -22393,29 +22393,111 @@ var Section = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Section.__proto__ || Object.getPrototypeOf(Section)).call(this, props));
 
-        _this.componentWillMount = function () {
-            _this.listOfUsers = _this.state.users.map(function (u) {
+        _this.componentDidMount = function () {
+            // this.listOfUsers = this.state.users.map(u => (<div className="list-group-item list-group-item-action" key={u.index}>{u.firstName + " " + u.lastName}<button type="button" className="info">Info</button><button type="button" className="edit" onClick={this.deleteUser(u.index)}>edycja</button><button type="button" className="delete">-</button></div>));
+            // this.showUserInfo();
+
+        };
+
+        _this.showUserInfo = function () {
+            var users = _this.state.users.map(function (u) {
                 return _react2.default.createElement(
-                    "div",
-                    { className: "list-group-item list-group-item-action", key: u.index },
-                    u.firstName + " " + u.lastName,
+                    "tr",
+                    null,
                     _react2.default.createElement(
-                        "button",
-                        { type: "button", className: "info" },
-                        "Info"
+                        "td",
+                        { key: u.index },
+                        u.index
                     ),
                     _react2.default.createElement(
-                        "button",
-                        { type: "button", className: "edit", onClick: _this.deleteUser(u.index) },
-                        "edycja"
+                        "td",
+                        null,
+                        u.firstName
                     ),
                     _react2.default.createElement(
-                        "button",
-                        { type: "button", className: "delete" },
-                        "-"
+                        "td",
+                        null,
+                        u.lastName
+                    ),
+                    _react2.default.createElement(
+                        "td",
+                        null,
+                        u.city
+                    ),
+                    _react2.default.createElement(
+                        "td",
+                        null,
+                        u.country
+                    ),
+                    _react2.default.createElement(
+                        "td",
+                        null,
+                        u.sex
+                    ),
+                    _react2.default.createElement(
+                        "td",
+                        null,
+                        "forecast"
                     )
                 );
             });
+
+            _this.table = _react2.default.createElement(
+                "div",
+                { className: "table-responsive" },
+                _react2.default.createElement(
+                    "table",
+                    { className: "table" },
+                    _react2.default.createElement(
+                        "thead",
+                        null,
+                        _react2.default.createElement(
+                            "tr",
+                            null,
+                            _react2.default.createElement(
+                                "th",
+                                null,
+                                "#"
+                            ),
+                            _react2.default.createElement(
+                                "th",
+                                null,
+                                "Imi\u0119"
+                            ),
+                            _react2.default.createElement(
+                                "th",
+                                null,
+                                "Nazwisko"
+                            ),
+                            _react2.default.createElement(
+                                "th",
+                                null,
+                                "Miasto"
+                            ),
+                            _react2.default.createElement(
+                                "th",
+                                null,
+                                "Kraj"
+                            ),
+                            _react2.default.createElement(
+                                "th",
+                                null,
+                                "Ple\u0107"
+                            ),
+                            _react2.default.createElement(
+                                "th",
+                                null,
+                                "Pogoda"
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "tbody",
+                        null,
+                        users
+                    )
+                )
+            );
         };
 
         _this.deleteUser = function (i) {
@@ -22432,10 +22514,16 @@ var Section = function (_React$Component) {
 
         _this.editUser = function (firstName, lastName, city, country, sex, i) {
             var users = _this.state.users;
+            if (firstName) users[i].firstName = firstName;
+            if (lastName) users[i].lastName = lastName;
+            if (city) users[i].city = city;
+            if (country) users[i].country = country;
+            if (sex) users[i].sex = sex;
         };
 
         _this.state = {
-            users: [{ index: 0, firstName: "Imię", lastName: "Nazwisko", city: "city", country: "country", sex: "sex" }, { index: 0, firstName: "user1", lastName: "userLast", city: "city", country: "country", sex: "sex" }, { index: 0, firstName: "user", lastName: "userLast", city: "city", country: "country", sex: "sex" }]
+            users: [{ index: 0, firstName: "Imię", lastName: "Nazwisko", city: "city", country: "country", sex: "sex" }, { index: 1, firstName: "user1", lastName: "userLast", city: "city", country: "country", sex: "sex" }, { index: 2, firstName: "user", lastName: "userLast", city: "city", country: "country", sex: "sex" }],
+            deleteAddEdit: 0
         };
         return _this;
     }
@@ -22466,7 +22554,8 @@ var Section = function (_React$Component) {
                             "+"
                         )
                     )
-                )
+                ),
+                this.table
             );
         }
     }]);
