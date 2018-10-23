@@ -22423,7 +22423,9 @@ var Section = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Section.__proto__ || Object.getPrototypeOf(Section)).call(this, props));
 
         _this.setName = function (event) {
-            _this.setState({ newUser: { firstName: event.target.value } });
+            var user = _this.state.newUser;
+            user.firstName = event.target.value;
+            _this.setState({ newUser: user });
         };
 
         _this.addForm = _react2.default.createElement(
@@ -22434,7 +22436,7 @@ var Section = function (_React$Component) {
                 null,
                 _react2.default.createElement(
                     "div",
-                    { className: "form-group", onSubmit: _this.handleSubmit },
+                    { className: "form-group" },
                     _react2.default.createElement(
                         "label",
                         null,
@@ -22499,89 +22501,101 @@ var Section = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     "button",
-                    { type: "submit", className: "btn btn-primary" },
+                    { type: "submit", className: "btn btn-primary", onSubmit: _this.handleSubmit },
                     "Dodaj"
                 )
             )
         );
-        _this.editForm = _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-                "form",
+
+        _this.showEditForm = function (index) {
+
+            var nameValue = "";
+
+            _this.editForm = _react2.default.createElement(
+                "div",
                 null,
                 _react2.default.createElement(
-                    "div",
-                    { className: "form-group", onSubmit: _this.handleSubmit },
+                    "form",
+                    null,
                     _react2.default.createElement(
-                        "label",
-                        null,
-                        "Imi\u0119"
-                    ),
-                    _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: "EDITTTTTT", onChange: function onChange() {
-                            return _this.setName;
-                        } })
-                ),
-                _react2.default.createElement(
-                    "div",
-                    { className: "form-group" },
-                    _react2.default.createElement(
-                        "label",
-                        null,
-                        "Nazwisko"
-                    ),
-                    _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: "Wpisz nazwisko" })
-                ),
-                _react2.default.createElement(
-                    "div",
-                    { className: "form-group" },
-                    _react2.default.createElement(
-                        "label",
-                        null,
-                        "Wybierz p\u0142e\u0107"
-                    ),
-                    _react2.default.createElement(
-                        "select",
-                        { className: "form-control" },
+                        "div",
+                        { className: "form-group", onSubmit: _this.handleSubmit },
                         _react2.default.createElement(
-                            "option",
+                            "label",
                             null,
-                            "M\u0119\u017Cczyzna"
+                            "Imi\u0119"
+                        ),
+                        _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: _this.state.users[index].firstName, value: nameValue })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "form-group" },
+                        _react2.default.createElement(
+                            "label",
+                            null,
+                            "Nazwisko"
+                        ),
+                        _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: _this.state.users[index].lastName })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "form-group" },
+                        _react2.default.createElement(
+                            "label",
+                            null,
+                            "Wybierz p\u0142e\u0107"
                         ),
                         _react2.default.createElement(
-                            "option",
-                            null,
-                            "Kobieta"
+                            "select",
+                            { className: "form-control" },
+                            _react2.default.createElement(
+                                "option",
+                                null,
+                                "M\u0119\u017Cczyzna"
+                            ),
+                            _react2.default.createElement(
+                                "option",
+                                null,
+                                "Kobieta"
+                            )
                         )
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "form-group" },
+                        _react2.default.createElement(
+                            "label",
+                            null,
+                            "Miasto"
+                        ),
+                        _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: _this.state.users[index].city })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "form-group" },
+                        _react2.default.createElement(
+                            "label",
+                            null,
+                            "Kraj"
+                        ),
+                        _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: _this.state.users[index].country })
+                    ),
+                    _react2.default.createElement(
+                        "button",
+                        { type: "submit", className: "btn btn-primary", onSubmit: _this.editUser(index, nameValue) },
+                        "Edytuj"
                     )
-                ),
-                _react2.default.createElement(
-                    "div",
-                    { className: "form-group" },
-                    _react2.default.createElement(
-                        "label",
-                        null,
-                        "Miasto"
-                    ),
-                    _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: "Wpisz miasto" })
-                ),
-                _react2.default.createElement(
-                    "div",
-                    { className: "form-group" },
-                    _react2.default.createElement(
-                        "label",
-                        null,
-                        "Kraj"
-                    ),
-                    _react2.default.createElement("input", { className: "form-control form-control-lg", type: "text", placeholder: "Wpisz pa\u0144stwo" })
-                ),
-                _react2.default.createElement(
-                    "button",
-                    { type: "submit", className: "btn btn-primary" },
-                    "Dodaj"
                 )
-            )
-        );
+            );
+
+            _this.setState({ showEditUser: _this.state.showEditUser === true ? false : true, showAddUser: false, showUser: false });
+        };
+
+        _this.editUser = function (index, name) {
+            var users = _this.state.users;
+            users[index].firstName = name;
+            _this.setState({ users: users });
+        };
 
         _this.handleSubmit = function () {
             event.preventDefault();
@@ -22605,10 +22619,6 @@ var Section = function (_React$Component) {
 
         _this.editUser = function (firstName, lastName, city, country, sex, i) {
             var users = _this.state.users;
-        };
-
-        _this.showEditForm = function () {
-            _this.setState({ showEditUser: _this.state.showEditUser === true ? false : true, showAddUser: false, showUser: false });
         };
 
         _this.showUserInfo = function (index) {
@@ -22676,7 +22686,7 @@ var Section = function (_React$Component) {
                             _react2.default.createElement(
                                 "td",
                                 null,
-                                _this.state.users[index].firstName.toUpperCase()
+                                _this.state.users[index].firstName
                             ),
                             _react2.default.createElement(
                                 "td",

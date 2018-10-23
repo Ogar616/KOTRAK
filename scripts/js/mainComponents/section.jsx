@@ -17,12 +17,14 @@ class Section extends React.Component {
     }
 
     setName = (event) => {
-        this.setState({newUser: {firstName: event.target.value}})
+        let user = this.state.newUser;
+        user.firstName = event.target.value;
+        this.setState({newUser: user})
     };
 
     addForm = (<div>
         <form>
-            <div className="form-group" onSubmit={this.handleSubmit}>
+            <div className="form-group">
                 <label>Imię</label>
                 <input className="form-control form-control-lg" type="text" placeholder="Wpisz imię"  onChange={() => this.setName}></input>
             </div>
@@ -46,39 +48,52 @@ class Section extends React.Component {
                 <label>Kraj</label>
                 <input className="form-control form-control-lg" type="text" placeholder="Wpisz państwo" ></input>
             </div>
-            <button type="submit" className="btn btn-primary">Dodaj</button>
+            <button type="submit" className="btn btn-primary" onSubmit={this.handleSubmit}>Dodaj</button>
         </form>
     </div>);
 
-    editForm = (<div>
-        <form>
-            <div className="form-group" onSubmit={this.handleSubmit}>
-                <label>Imię</label>
-                <input className="form-control form-control-lg" type="text" placeholder="EDITTTTTT"  onChange={() => this.setName}></input>
-            </div>
-            <div className="form-group">
-                <label>Nazwisko</label>
-                <input className="form-control form-control-lg" type="text" placeholder="Wpisz nazwisko" ></input>
+    showEditForm = (index) => {
 
-            </div>
-            <div className="form-group">
-                <label>Wybierz płeć</label>
-                <select className="form-control" >
-                    <option>Mężczyzna</option>
-                    <option>Kobieta</option>
-                </select>
-            </div>
-            <div className="form-group">
-                <label>Miasto</label>
-                <input className="form-control form-control-lg" type="text" placeholder="Wpisz miasto" ></input>
-            </div>
-            <div className="form-group">
-                <label>Kraj</label>
-                <input className="form-control form-control-lg" type="text" placeholder="Wpisz państwo" ></input>
-            </div>
-            <button type="submit" className="btn btn-primary">Dodaj</button>
-        </form>
-    </div>);
+        let nameValue = "";
+
+        this.editForm = (<div>
+            <form>
+                <div className="form-group" onSubmit={this.handleSubmit}>
+                    <label>Imię</label>
+                    <input className="form-control form-control-lg" type="text" placeholder={this.state.users[index].firstName}  value={nameValue}></input>
+                </div>
+                <div className="form-group">
+                    <label>Nazwisko</label>
+                    <input className="form-control form-control-lg" type="text" placeholder={this.state.users[index].lastName} ></input>
+
+                </div>
+                <div className="form-group">
+                    <label>Wybierz płeć</label>
+                    <select className="form-control" >
+                        <option>Mężczyzna</option>
+                        <option>Kobieta</option>
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label>Miasto</label>
+                    <input className="form-control form-control-lg" type="text" placeholder={this.state.users[index].city} ></input>
+                </div>
+                <div className="form-group">
+                    <label>Kraj</label>
+                    <input className="form-control form-control-lg" type="text" placeholder={this.state.users[index].country} ></input>
+                </div>
+                <button type="submit" className="btn btn-primary" onSubmit={this.editUser(index, nameValue)}>Edytuj</button>
+            </form>
+        </div>);
+
+        this.setState({showEditUser: this.state.showEditUser === true ? false : true, showAddUser: false, showUser: false})
+    };
+
+    editUser = (index, name) => {
+        let users = this.state.users;
+        users[index].firstName = name;
+        this.setState({users: users})
+    };
 
     handleSubmit = () => {
         event.preventDefault();
@@ -107,10 +122,6 @@ class Section extends React.Component {
 
     };
 
-    showEditForm = () => {
-        this.setState({showEditUser: this.state.showEditUser === true ? false : true, showAddUser: false, showUser: false})
-    };
-
     showUserInfo = (index) => {
 
         this.info = (<div className="table-responsive">
@@ -129,7 +140,7 @@ class Section extends React.Component {
                 <tbody>
                 <tr>
                     <td key={this.state.users[index].index}>{this.state.users[index].index}</td>
-                    <td>{this.state.users[index].firstName.toUpperCase()}</td>
+                    <td>{this.state.users[index].firstName}</td>
                     <td>{this.state.users[index].lastName}</td>
                     <td>{this.state.users[index].city}</td>
                     <td>{this.state.users[index].country}</td>

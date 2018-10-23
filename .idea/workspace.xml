@@ -66,14 +66,14 @@
           <entry key="css" value="312" />
           <entry key="js" value="20" />
           <entry key="json" value="8" />
-          <entry key="jsx" value="3692" />
+          <entry key="jsx" value="4049" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="312" />
           <entry key="JSON" value="8" />
-          <entry key="JSX Harmony" value="3692" />
+          <entry key="JSX Harmony" value="4049" />
           <entry key="JavaScript" value="20" />
         </counts>
       </usages-collector>
@@ -119,13 +119,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../scripts/js/mainComponents/section.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
+            <state relative-caret-position="342">
+              <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
               <folding>
-                <element signature="e#733#749#0" />
-                <element signature="e#809#2081#0" />
+                <element signature="e#2218#3795#0" />
                 <element signature="e#2214#2230#0" />
                 <element signature="e#2198#2310#0" />
+                <element signature="e#2372#2560#0" />
+                <element signature="e#2770#2786#0" />
+                <element signature="e#2705#3796#0" />
               </folding>
             </state>
           </provider>
@@ -295,12 +297,12 @@
       <option name="presentableId" value="Default" />
       <updated>1540213946582</updated>
       <workItem from="1540213950219" duration="2615000" />
-      <workItem from="1540236654143" duration="28730000" />
+      <workItem from="1540236654143" duration="30830000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31345000" />
+    <option name="totallyTimeSpent" value="33445000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="83" y="592" width="1837" height="1053" extended-state="6" />
@@ -399,13 +401,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../scripts/js/mainComponents/section.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
+        <state relative-caret-position="342">
+          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
           <folding>
-            <element signature="e#733#749#0" />
-            <element signature="e#809#2081#0" />
+            <element signature="e#2218#3795#0" />
             <element signature="e#2214#2230#0" />
             <element signature="e#2198#2310#0" />
+            <element signature="e#2372#2560#0" />
+            <element signature="e#2770#2786#0" />
+            <element signature="e#2705#3796#0" />
           </folding>
         </state>
       </provider>
