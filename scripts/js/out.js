@@ -22394,10 +22394,10 @@ var Section = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Section.__proto__ || Object.getPrototypeOf(Section)).call(this, props));
 
         _this.componentWillMount = function () {
-            _this.listOfUsers = _this.state.users.map(function (u, i) {
+            _this.listOfUsers = _this.state.users.map(function (u) {
                 return _react2.default.createElement(
                     "div",
-                    { className: "list-group-item list-group-item-action", key: i },
+                    { className: "list-group-item list-group-item-action", key: u.index },
                     u.firstName + " " + u.lastName,
                     _react2.default.createElement(
                         "button",
@@ -22406,7 +22406,7 @@ var Section = function (_React$Component) {
                     ),
                     _react2.default.createElement(
                         "button",
-                        { type: "button", className: "edit", onClick: _this.deleteUser(i) },
+                        { type: "button", className: "edit", onClick: _this.deleteUser(u.index) },
                         "edycja"
                     ),
                     _react2.default.createElement(
@@ -22435,7 +22435,7 @@ var Section = function (_React$Component) {
         };
 
         _this.state = {
-            users: [{ firstName: "Imię", lastName: "Nazwisko", city: "city", country: "country", sex: "sex" }, { firsName: "user1", lastName: "userLast", city: "city", country: "country", sex: "sex" }, { firsName: "user", lastName: "userLast", city: "city", country: "country", sex: "sex" }]
+            users: [{ index: 0, firstName: "Imię", lastName: "Nazwisko", city: "city", country: "country", sex: "sex" }, { index: 0, firstName: "user1", lastName: "userLast", city: "city", country: "country", sex: "sex" }, { index: 0, firstName: "user", lastName: "userLast", city: "city", country: "country", sex: "sex" }]
         };
         return _this;
     }
