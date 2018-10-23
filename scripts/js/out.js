@@ -22388,15 +22388,62 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Section = function (_React$Component) {
     _inherits(Section, _React$Component);
 
-    function Section() {
+    function Section(props) {
         _classCallCheck(this, Section);
 
-        return _possibleConstructorReturn(this, (Section.__proto__ || Object.getPrototypeOf(Section)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Section.__proto__ || Object.getPrototypeOf(Section)).call(this, props));
+
+        _this.componentWillMount = function () {
+            _this.listOfUsers = _this.state.users.map(function (u, i) {
+                return _react2.default.createElement(
+                    "div",
+                    { className: "list-group-item list-group-item-action", key: i },
+                    u.firstName + " " + u.lastName,
+                    _react2.default.createElement(
+                        "button",
+                        { type: "button", className: "info" },
+                        "Info"
+                    ),
+                    _react2.default.createElement(
+                        "button",
+                        { type: "button", className: "edit", onClick: _this.deleteUser(i) },
+                        "edycja"
+                    ),
+                    _react2.default.createElement(
+                        "button",
+                        { type: "button", className: "delete" },
+                        "-"
+                    )
+                );
+            });
+        };
+
+        _this.deleteUser = function (i) {
+            var users = _this.state.users;
+            users.splice(i);
+            _this.setState({ users: users });
+        };
+
+        _this.addUser = function (firstName, lastName, city, country, sex) {
+            var users = _this.state.users;
+            users.push({ firstName: firstName, lastName: lastName, city: city, country: country, sex: sex });
+            _this.setState({ users: users });
+        };
+
+        _this.editUser = function (firstName, lastName, city, country, sex, i) {
+            var users = _this.state.users;
+        };
+
+        _this.state = {
+            users: [{ firstName: "Imię", lastName: "Nazwisko", city: "city", country: "country", sex: "sex" }, { firsName: "user1", lastName: "userLast", city: "city", country: "country", sex: "sex" }, { firsName: "user", lastName: "userLast", city: "city", country: "country", sex: "sex" }]
+        };
+        return _this;
     }
 
     _createClass(Section, [{
         key: "render",
         value: function render() {
+
             return _react2.default.createElement(
                 "div",
                 { className: "container" },
@@ -22408,66 +22455,7 @@ var Section = function (_React$Component) {
                         { className: "list-group-item list-group-item-action active" },
                         "Lista u\u017Cytkownik\xF3w"
                     ),
-                    _react2.default.createElement(
-                        "div",
-                        { className: "list-group-item list-group-item-action" },
-                        "user1",
-                        _react2.default.createElement(
-                            "button",
-                            { type: "button", className: "info" },
-                            "Info"
-                        ),
-                        _react2.default.createElement(
-                            "button",
-                            { type: "button", className: "edit" },
-                            "edycja"
-                        ),
-                        _react2.default.createElement(
-                            "button",
-                            { type: "button", className: "delete" },
-                            "-"
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "div",
-                        { className: "list-group-item list-group-item-action" },
-                        "user2",
-                        _react2.default.createElement(
-                            "button",
-                            { type: "button", className: "info" },
-                            "Info"
-                        ),
-                        _react2.default.createElement(
-                            "button",
-                            { type: "button", className: "edit" },
-                            "edycja"
-                        ),
-                        _react2.default.createElement(
-                            "button",
-                            { type: "button", className: "delete" },
-                            "-"
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "div",
-                        { className: "list-group-item list-group-item-action" },
-                        "user3",
-                        _react2.default.createElement(
-                            "button",
-                            { type: "button", className: "info" },
-                            "Info"
-                        ),
-                        _react2.default.createElement(
-                            "button",
-                            { type: "button", className: "edit" },
-                            "edycja"
-                        ),
-                        _react2.default.createElement(
-                            "button",
-                            { type: "button", className: "delete" },
-                            "-"
-                        )
-                    ),
+                    this.listOfUsers,
                     _react2.default.createElement(
                         "div",
                         { className: "list-group-item list-group-item-action" },
@@ -22543,22 +22531,18 @@ exports.default = Footer;
 module.exports = {
     entry: "./scripts/js/app.jsx",
     output: { filename: "./scripts/js/out.js" },
+    devServer: {
+        inline: true,
+        contentBase: './',
+        port: 3001
+    },
     watch: true,
     module: {
         rules: [ {
             test: /\.jsx$/,  exclude: /node_modules/,
             loader: 'babel-loader',
-            query: { presets: ['es2015', 'react'] }
-        },
-            {
-                test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {}
-                    }
-                ]
-            }
+            query: { presets: ['es2015', 'stage-2', 'react'] }
+        }
         ]
     }
 };
