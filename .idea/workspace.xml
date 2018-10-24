@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33c1892a-5fe9-4e85-9782-bee56abfff51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/smallWeather.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scripts/js/mainComponents/section.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/js/mainComponents/section.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/weather.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/weather.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/smallWeather.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/userInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/userInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/weather.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../scripts/js/out.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/js/out.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -110,34 +111,34 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="json" value="13" />
-          <entry key="jsx" value="1988" />
+          <entry key="jsx" value="2671" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="13" />
-          <entry key="JSX Harmony" value="1988" />
+          <entry key="JSX Harmony" value="2671" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="jsx" value="3" />
+          <entry key="jsx" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JSX Harmony" value="3" />
+          <entry key="JSX Harmony" value="4" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../scripts/js/mainComponents/section.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="163" column="37" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="37" />
+            <state relative-caret-position="553">
+              <caret line="161" column="222" selection-start-line="161" selection-start-column="222" selection-end-line="161" selection-end-column="222" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="e#1039#1169#0" />
@@ -154,20 +155,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/weather.jsx">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/userInfo.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="28" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/smallWeather.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="378">
+              <caret line="18" column="146" selection-start-line="18" selection-start-column="146" selection-end-line="18" selection-end-column="146" />
             </state>
           </provider>
         </entry>
@@ -213,6 +205,7 @@
         <option value="$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/smallWeather.jsx" />
         <option value="$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/weather.jsx" />
         <option value="$PROJECT_DIR$/../scripts/js/mainComponents/section.jsx" />
+        <option value="$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/userInfo.jsx" />
       </list>
     </option>
   </component>
@@ -323,12 +316,12 @@
       <workItem from="1540213950219" duration="2615000" />
       <workItem from="1540236654143" duration="30869000" />
       <workItem from="1540381822986" duration="1751000" />
-      <workItem from="1540384259093" duration="14346000" />
+      <workItem from="1540384259093" duration="16978000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49581000" />
+    <option name="totallyTimeSpent" value="52213000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="83" y="592" width="1837" height="1053" extended-state="6" />
@@ -400,9 +393,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/userInfo.jsx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/smallWeather.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -412,15 +402,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/weather.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="28" selection-end-column="6" />
+        <state relative-caret-position="558">
+          <caret line="28" column="6" lean-forward="true" selection-start-line="20" selection-end-line="28" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../scripts/js/mainComponents/section.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="163" column="37" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="37" />
+        <state relative-caret-position="553">
+          <caret line="161" column="222" selection-start-line="161" selection-start-column="222" selection-end-line="161" selection-end-column="222" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
             <element signature="e#1039#1169#0" />
@@ -433,6 +423,13 @@
             <element signature="e#4809#4958#0" />
             <element signature="e#5024#5070#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../scripts/js/mainComponents/sectionComponents/userInfo.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="146" selection-start-line="18" selection-start-column="146" selection-end-line="18" selection-end-column="146" />
         </state>
       </provider>
     </entry>

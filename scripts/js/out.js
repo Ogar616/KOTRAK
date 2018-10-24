@@ -22907,9 +22907,9 @@ var _react = __webpack_require__(24);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _weather = __webpack_require__(191);
+var _userInfo = __webpack_require__(193);
 
-var _weather2 = _interopRequireDefault(_weather);
+var _userInfo2 = _interopRequireDefault(_userInfo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22918,9 +22918,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// import data from '../../../data.json';
-
 
 var Section = function (_React$Component) {
     _inherits(Section, _React$Component);
@@ -23129,133 +23126,18 @@ var Section = function (_React$Component) {
             var users = _this.state.users;
         };
 
-        _this.showUserInfo = function (index) {
-
-            _this.info = _react2.default.createElement(
-                'div',
-                { className: 'table-responsive' },
-                _react2.default.createElement(
-                    'table',
-                    { className: 'table' },
-                    _react2.default.createElement(
-                        'thead',
-                        null,
-                        _react2.default.createElement(
-                            'tr',
-                            null,
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                'ID'
-                            ),
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                'Imi\u0119'
-                            ),
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                'Nazwisko'
-                            ),
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                'Miasto'
-                            ),
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                'Kraj'
-                            ),
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                'Ple\u0107'
-                            ),
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                'Temperatura'
-                            ),
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                'Wilgotno\u015B\u0107'
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'tbody',
-                        null,
-                        _react2.default.createElement(
-                            'tr',
-                            null,
-                            _react2.default.createElement(
-                                'td',
-                                { key: _this.state.users[index].index },
-                                _this.state.users[index].index
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                _this.state.users[index].firstName
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                _this.state.users[index].lastName
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                _this.state.users[index].city
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                _this.state.users[index].country
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                _this.state.users[index].sex
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                'forecast'
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                'forecast'
-                            )
-                        )
-                    )
-                )
-            );
-            _this.setState({ showUser: _this.state.showUser === true ? false : true, addUser: null, showEditUser: null });
+        _this.showUserInfo = function (i) {
+            _this.setState({ showUser: _this.state.showUser === true ? false : true, addUser: null, showEditUser: null, chosenUser: i });
         };
 
         _this.state = {
-            users: [{ index: 0, firstName: "Kamil", lastName: "Sobczyk", city: "Zabrze", country: "Polska", sex: "Mężczyzna" }, { index: 1, firstName: "Adam", lastName: "Adamowicz", city: "Katowice", country: "Polska", sex: "Mężczyzna" }, { index: 2, firstName: "Anna", lastName: "Malinowska", city: "Gliwice", country: "Polska", sex: "Kobieta" }],
+            users: [{ index: 0, firstName: "Kamil", lastName: "Sobczyk", city: "Zabrze", country: "Polska", sex: "Mężczyzna" }, { index: 1, firstName: "Adam", lastName: "Adamowicz", city: "Sydney", country: "Australia", sex: "Mężczyzna" }, { index: 2, firstName: "Anna", lastName: "Malinowska", city: "Gdańsk", country: "Polska", sex: "Kobieta" }],
             newUser: { index: "", firstName: "", lastName: "", city: "", country: "", sex: "" },
             showUser: false,
             showAddUser: false,
-            showEditUser: false
+            showEditUser: false,
+            chosenUser: 0
         };
-        _this.setName = _this.setName.bind(_this);
-        // fetch('http://http://localhost:63342/KOTRAK/data.json')
-        // .then( resp => {
-        //     if (resp.ok) return resp.json();
-        //     else throw new Error("Brak danych");
-        // }).then (obj => {
-        //     console.log(obj)
-        // }).catch( err => {
-        //     console.log( err )
-        // })
-
         return _this;
     }
 
@@ -23333,9 +23215,8 @@ var Section = function (_React$Component) {
                         )
                     )
                 ),
-                showInfo,
-                showedForm,
-                _react2.default.createElement(_weather2.default, null)
+                _react2.default.createElement(_userInfo2.default, { show: this.state.showUser, users: this.state.users, chosenUser: this.state.chosenUser, country: this.state.users[this.state.chosenUser].country, city: this.state.users[this.state.chosenUser].city }),
+                showedForm
             );
         }
     }]);
@@ -23419,7 +23300,9 @@ module.exports = {
 
 /***/ }),
 /* 190 */,
-/* 191 */
+/* 191 */,
+/* 192 */,
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23443,23 +23326,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var country = "polska";
+var UserInfo = function (_React$Component) {
+    _inherits(UserInfo, _React$Component);
 
-var city = "zabrze";
+    function UserInfo(props) {
+        _classCallCheck(this, UserInfo);
 
-var API = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + city + "%2C%20" + country + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys%20u=c";
-
-var KEY = "dj0yJmk9OHVLa1c1aDlDemZBJmQ9WVdrOU5tNXVTek0zTnpZbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0wOA--";
-
-var Weather = function (_React$Component) {
-    _inherits(Weather, _React$Component);
-
-    function Weather(props) {
-        _classCallCheck(this, Weather);
-
-        var _this = _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (UserInfo.__proto__ || Object.getPrototypeOf(UserInfo)).call(this, props));
 
         _this.componentDidMount = function () {
+
+            var API = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + _this.props.city + "%2C%20" + _this.props.country + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys%20u=c";
 
             fetch(API).then(function (res) {
                 return res.json();
@@ -23468,29 +23345,133 @@ var Weather = function (_React$Component) {
             });
         };
 
-        _this.state = {};
-
+        _this.state = {
+            temp: 0,
+            humidity: 0
+        };
         return _this;
     }
 
-    _createClass(Weather, [{
+    _createClass(UserInfo, [{
         key: "render",
         value: function render() {
-            // const data = this.state.data;
-            // console.log(data);
-            return _react2.default.createElement(
-                "div",
-                null,
-                console.log(this.state.humidity),
-                console.log(this.state.temp)
-            );
+            if (this.props.show == !false) {
+                return _react2.default.createElement(
+                    "div",
+                    null,
+                    _react2.default.createElement(
+                        "div",
+                        { className: "table-responsive" },
+                        _react2.default.createElement(
+                            "table",
+                            { className: "table" },
+                            _react2.default.createElement(
+                                "thead",
+                                null,
+                                _react2.default.createElement(
+                                    "tr",
+                                    null,
+                                    _react2.default.createElement(
+                                        "th",
+                                        null,
+                                        "ID"
+                                    ),
+                                    _react2.default.createElement(
+                                        "th",
+                                        null,
+                                        "Imi\u0119"
+                                    ),
+                                    _react2.default.createElement(
+                                        "th",
+                                        null,
+                                        "Nazwisko"
+                                    ),
+                                    _react2.default.createElement(
+                                        "th",
+                                        null,
+                                        "Miasto"
+                                    ),
+                                    _react2.default.createElement(
+                                        "th",
+                                        null,
+                                        "Kraj"
+                                    ),
+                                    _react2.default.createElement(
+                                        "th",
+                                        null,
+                                        "Ple\u0107"
+                                    ),
+                                    _react2.default.createElement(
+                                        "th",
+                                        null,
+                                        "Temperatura"
+                                    ),
+                                    _react2.default.createElement(
+                                        "th",
+                                        null,
+                                        "Wilgotno\u015B\u0107"
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "tbody",
+                                null,
+                                _react2.default.createElement(
+                                    "tr",
+                                    null,
+                                    _react2.default.createElement(
+                                        "td",
+                                        { key: this.props.users[this.props.chosenUser].index },
+                                        this.props.users[this.props.chosenUser].index
+                                    ),
+                                    _react2.default.createElement(
+                                        "td",
+                                        null,
+                                        this.props.users[this.props.chosenUser].firstName
+                                    ),
+                                    _react2.default.createElement(
+                                        "td",
+                                        null,
+                                        this.props.users[this.props.chosenUser].lastName
+                                    ),
+                                    _react2.default.createElement(
+                                        "td",
+                                        null,
+                                        this.props.users[this.props.chosenUser].city
+                                    ),
+                                    _react2.default.createElement(
+                                        "td",
+                                        null,
+                                        this.props.users[this.props.chosenUser].country
+                                    ),
+                                    _react2.default.createElement(
+                                        "td",
+                                        null,
+                                        this.props.users[this.props.chosenUser].sex
+                                    ),
+                                    _react2.default.createElement(
+                                        "td",
+                                        null,
+                                        this.state.temp
+                                    ),
+                                    _react2.default.createElement(
+                                        "td",
+                                        null,
+                                        this.state.humidity
+                                    )
+                                )
+                            )
+                        )
+                    )
+                );
+            } else return _react2.default.createElement("div", null);
         }
     }]);
 
-    return Weather;
+    return UserInfo;
 }(_react2.default.Component);
 
-exports.default = Weather;
+exports.default = UserInfo;
 
 /***/ })
 /******/ ]);

@@ -1,6 +1,5 @@
 import React from 'react';
-import Weather from './sectionComponents/weather.jsx';
-// import data from '../../../data.json';
+import UserInfo from './sectionComponents/userInfo.jsx';
 
 
 class Section extends React.Component {
@@ -8,27 +7,15 @@ class Section extends React.Component {
         super(props);
         this.state = {
             users: [{index: 0, firstName: "Kamil", lastName: "Sobczyk", city: "Zabrze", country: "Polska", sex: "Mężczyzna"},
-                {index: 1, firstName: "Adam", lastName: "Adamowicz", city: "Katowice", country: "Polska", sex: "Mężczyzna"},
-                {index: 2, firstName: "Anna", lastName: "Malinowska", city: "Gliwice", country: "Polska", sex: "Kobieta"}],
+                {index: 1, firstName: "Adam", lastName: "Adamowicz", city: "Sydney", country: "Australia", sex: "Mężczyzna"},
+                {index: 2, firstName: "Anna", lastName: "Malinowska", city: "Gdańsk", country: "Polska", sex: "Kobieta"}],
             newUser: {index: "", firstName: "", lastName: "", city: "", country: "", sex: ""},
             showUser: false,
             showAddUser: false,
-            showEditUser: false
+            showEditUser: false,
+            chosenUser: 0
         };
-        this.setName = this.setName.bind(this);
-        // fetch('http://http://localhost:63342/KOTRAK/data.json')
-        // .then( resp => {
-        //     if (resp.ok) return resp.json();
-        //     else throw new Error("Brak danych");
-        // }).then (obj => {
-        //     console.log(obj)
-        // }).catch( err => {
-        //     console.log( err )
-        // })
-
     }
-
-
 
     setName = (event) => {
         let user = this.state.newUser;
@@ -113,7 +100,6 @@ class Section extends React.Component {
         event.preventDefault();
     };
 
-
     deleteUser = i => {
         let users = this.state.users;
         users.splice(i, 1);
@@ -136,38 +122,10 @@ class Section extends React.Component {
 
     };
 
-    showUserInfo = (index) => {
-
-        this.info = (<div className="table-responsive">
-            <table className="table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Imię</th>
-                    <th>Nazwisko</th>
-                    <th>Miasto</th>
-                    <th>Kraj</th>
-                    <th>Pleć</th>
-                    <th>Temperatura</th>
-                    <th>Wilgotność</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td key={this.state.users[index].index}>{this.state.users[index].index}</td>
-                    <td>{this.state.users[index].firstName}</td>
-                    <td>{this.state.users[index].lastName}</td>
-                    <td>{this.state.users[index].city}</td>
-                    <td>{this.state.users[index].country}</td>
-                    <td>{this.state.users[index].sex}</td>
-                    <td>forecast</td>
-                    <td>forecast</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>);
-        this.setState({showUser: this.state.showUser === true ? false : true, addUser: null, showEditUser: null})
+    showUserInfo = (i) => {
+        this.setState({showUser: this.state.showUser === true ? false : true, addUser: null, showEditUser: null, chosenUser: i})
     };
+
 
     render() {
         let showedForm = null;
@@ -201,9 +159,8 @@ class Section extends React.Component {
                         ))}
                     <div className="list-group-item list-group-item-action">Dodaj nowego użytkownika<button className="add" onClick={() => this.showAddForm()}>+</button></div>
                 </div>
-                {showInfo}
+                <UserInfo show={this.state.showUser} users={this.state.users} chosenUser={this.state.chosenUser} country={this.state.users[this.state.chosenUser].country} city={this.state.users[this.state.chosenUser].city}/>
                 {showedForm}
-                <Weather/>
             </div>
         );
     }
