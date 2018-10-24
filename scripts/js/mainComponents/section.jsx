@@ -1,4 +1,6 @@
 import React from 'react';
+import Weather from './sectionComponents/weather.jsx';
+// import data from '../../../data.json';
 
 
 class Section extends React.Component {
@@ -14,7 +16,19 @@ class Section extends React.Component {
             showEditUser: false
         };
         this.setName = this.setName.bind(this);
+        // fetch('http://http://localhost:63342/KOTRAK/data.json')
+        // .then( resp => {
+        //     if (resp.ok) return resp.json();
+        //     else throw new Error("Brak danych");
+        // }).then (obj => {
+        //     console.log(obj)
+        // }).catch( err => {
+        //     console.log( err )
+        // })
+
     }
+
+
 
     setName = (event) => {
         let user = this.state.newUser;
@@ -187,6 +201,7 @@ class Section extends React.Component {
                 </div>
                 {showInfo}
                 {showedForm}
+                <Weather/>
             </div>
         );
     }

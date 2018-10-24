@@ -1,7 +1,7 @@
 //Konfiguracja Webpack
 
 module.exports = {
-    entry: "./scripts/js/app.jsx",
+    entry: ['whatwg-fetch',"./scripts/js/app.jsx"],
     output: { filename: "./scripts/js/out.js" },
     devServer: {
         inline: true,
