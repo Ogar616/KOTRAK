@@ -148,7 +148,8 @@ class Section extends React.Component {
                     <th>Miasto</th>
                     <th>Kraj</th>
                     <th>Pleć</th>
-                    <th>Pogoda</th>
+                    <th>Temperatura</th>
+                    <th>Wilgotność</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -159,6 +160,7 @@ class Section extends React.Component {
                     <td>{this.state.users[index].city}</td>
                     <td>{this.state.users[index].country}</td>
                     <td>{this.state.users[index].sex}</td>
+                    <td>forecast</td>
                     <td>forecast</td>
                 </tr>
                 </tbody>

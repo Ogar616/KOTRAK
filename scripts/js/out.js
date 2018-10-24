@@ -23176,7 +23176,12 @@ var Section = function (_React$Component) {
                             _react2.default.createElement(
                                 'th',
                                 null,
-                                'Pogoda'
+                                'Temperatura'
+                            ),
+                            _react2.default.createElement(
+                                'th',
+                                null,
+                                'Wilgotno\u015B\u0107'
                             )
                         )
                     ),
@@ -23215,6 +23220,11 @@ var Section = function (_React$Component) {
                                 'td',
                                 null,
                                 _this.state.users[index].sex
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                'forecast'
                             ),
                             _react2.default.createElement(
                                 'td',
@@ -23433,7 +23443,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var API = "https://weather-ydn-yql.media.yahoo.com/forecastrss?w=2502265";
+var country = "polska";
+
+var city = "zabrze";
+
+var API = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + city + "%2C%20" + country + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys%20u=c";
+
 var KEY = "dj0yJmk9OHVLa1c1aDlDemZBJmQ9WVdrOU5tNXVTek0zTnpZbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0wOA--";
 
 var Weather = function (_React$Component) {
@@ -23446,31 +23461,14 @@ var Weather = function (_React$Component) {
 
         _this.componentDidMount = function () {
 
-            var result = void 0;
-            var result2 = void 0;
-
-            fetch("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys").then(function (res) {
+            fetch(API).then(function (res) {
                 return res.json();
-            }).then(function (json) {
-                _this.setState({ weather: json.result }, function () {
-                    console.log("SDsd");
-                });
-                console.log(json);
-
-                _this.weather = json.parse(result2);
-                result = json;
+            }).then(function (data) {
+                _this.setState({ "humidity": data.query.results.channel.atmosphere.humidity, "temp": data.query.results.channel.item.condition.temp });
             });
-
-            _this.setState({ aaa: "dsd" });
-            console.log("result" + result);
-            console.log("state" + _this.state.weather);
-            console.log("weather::" + _this.weather + "ebnd");
-            console.log(result2);
         };
 
-        _this.state = {
-            weather: []
-        };
+        _this.state = {};
 
         return _this;
     }
@@ -23478,11 +23476,13 @@ var Weather = function (_React$Component) {
     _createClass(Weather, [{
         key: "render",
         value: function render() {
+            // const data = this.state.data;
+            // console.log(data);
             return _react2.default.createElement(
                 "div",
                 null,
-                "Pogoda",
-                this.weather
+                console.log(this.state.humidity),
+                console.log(this.state.temp)
             );
         }
     }]);
