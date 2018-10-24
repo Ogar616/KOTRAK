@@ -22922,9 +22922,10 @@ var Section = function (_React$Component) {
             _this.setState({ users: users });
         };
 
-        _this.addUser = function (firstName, lastName, city, country, sex) {
-            var users = _this.state.users;
-            users.push({ firstName: firstName, lastName: lastName, city: city, country: country, sex: sex });
+        _this.addUser = function (user) {
+            // let users = this.state.users;
+            // users.push(user);
+            // this.setState({users: users})
         };
 
         _this.editUser = function (firstName, lastName, city, country, sex, i) {
@@ -22950,6 +22951,7 @@ var Section = function (_React$Component) {
             showEditUser: false,
             chosenUser: 0
         };
+        _this.addUser = _this.addUser.bind(_this);
         return _this;
     }
 
@@ -22969,7 +22971,7 @@ var Section = function (_React$Component) {
             }
 
             if (this.state.showAddUser !== false) {
-                showed = _react2.default.createElement(_addForm2.default, null);
+                showed = _react2.default.createElement(_addForm2.default, { submit: this.addUser() });
             }
             if (this.state.showEditUser !== false) {
                 showed = _react2.default.createElement(_editForm2.default, { chosenUser: this.state.chosenUser,
@@ -23284,9 +23286,10 @@ var AddForm = function (_React$Component) {
             genderOptions: ['Kobieta', 'Mężczyzna']
         };
         _this.handleFormSubmit = _this.handleFormSubmit.bind(_this);
-
         _this.handleFirstName = _this.handleFirstName.bind(_this);
-
+        _this.handleLastName = _this.handleLastName.bind(_this);
+        _this.handleCity = _this.handleCity.bind(_this);
+        _this.handleCountry = _this.handleCountry.bind(_this);
         return _this;
     }
 
@@ -23296,25 +23299,6 @@ var AddForm = function (_React$Component) {
             e.preventDefault();
             console.log("works");
         }
-
-        // handleFormSubmit(e) {
-        //     e.preventDefault();
-        //     let userData = this.state.newUser;
-        //
-        //     fetch('http://example.com',{
-        //         method: "POST",
-        //         body: JSON.stringify(userData),
-        //         headers: {
-        //             'Accept': 'application/json',
-        //             'Content-Type': 'application/json'
-        //         },
-        //     }).then(response => {
-        //         response.json().then(data =>{
-        //             console.log("Successful" + data);
-        //         })
-        //     })
-        // }
-
     }, {
         key: 'handleFirstName',
         value: function handleFirstName(e) {
@@ -23419,7 +23403,7 @@ var AddForm = function (_React$Component) {
                         placeholder: 'Wpisz państwo',
                         handleChange: this.handleCountry
                     }),
-                    _react2.default.createElement(_button2.default, { title: 'Dodaj' })
+                    _react2.default.createElement(_button2.default, { title: 'Dodaj', onClick: this.props.submit(this.state.newUser) })
                 )
             );
         }

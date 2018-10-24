@@ -16,6 +16,7 @@ class Section extends React.Component {
             showEditUser: false,
             chosenUser: 0
         };
+        this.addUser = this.addUser.bind(this);
     }
 
     setName = (event) => {
@@ -42,9 +43,10 @@ class Section extends React.Component {
 
 
 
-    addUser = (firstName, lastName, city, country, sex) => {
-        let users = this.state.users;
-        users.push({firstName: firstName, lastName: lastName, city: city, country: country, sex: sex});
+    addUser = user => {
+        // let users = this.state.users;
+        // users.push(user);
+        // this.setState({users: users})
     };
 
     editUser = (firstName, lastName, city, country, sex, i) => {
@@ -65,6 +67,8 @@ class Section extends React.Component {
     };
 
 
+
+
     render() {
         let showed = null;
 
@@ -77,7 +81,7 @@ class Section extends React.Component {
         }
 
         if (this.state.showAddUser !== false){
-            showed = <AddForm/>;
+            showed = <AddForm submit={this.addUser()}/>;
         }
         if (this.state.showEditUser !== false){
             showed = <EditForm chosenUser={this.state.chosenUser}

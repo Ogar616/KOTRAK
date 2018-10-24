@@ -17,9 +17,10 @@ class AddForm extends React.Component{
             genderOptions: ['Kobieta', 'Mężczyzna'],
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
-
         this.handleFirstName = this.handleFirstName.bind(this);
-
+        this.handleLastName = this.handleLastName.bind(this);
+        this.handleCity = this.handleCity.bind(this);
+        this.handleCountry = this.handleCountry.bind(this);
     }
 
 
@@ -27,24 +28,6 @@ class AddForm extends React.Component{
         e.preventDefault();
         console.log("works");
     }
-
-    // handleFormSubmit(e) {
-    //     e.preventDefault();
-    //     let userData = this.state.newUser;
-    //
-    //     fetch('http://example.com',{
-    //         method: "POST",
-    //         body: JSON.stringify(userData),
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json'
-    //         },
-    //     }).then(response => {
-    //         response.json().then(data =>{
-    //             console.log("Successful" + data);
-    //         })
-    //     })
-    // }
 
     handleFirstName(e) {
         let value = e.target.value;
@@ -131,39 +114,8 @@ class AddForm extends React.Component{
                             placeholder = {'Wpisz państwo'}
                             handleChange = {this.handleCountry}
                     />
-                    <Button title="Dodaj" />
+                    <Button title="Dodaj" onClick={this.props.submit(this.state.newUser)}/>
                 </form>
-
-
-
-
-                {/*<form>*/}
-                    {/*<div className="form-group">*/}
-                        {/*<label>Imię</label>*/}
-                        {/*<input className="form-control form-control-lg" type="text" placeholder="Wpisz imię"  onChange={() => this.setName}></input>*/}
-                    {/*</div>*/}
-                    {/*<div className="form-group">*/}
-                        {/*<label>Nazwisko</label>*/}
-                        {/*<input className="form-control form-control-lg" type="text" placeholder="Wpisz nazwisko" ></input>*/}
-
-                    {/*</div>*/}
-                    {/*<div className="form-group">*/}
-                        {/*<label>Wybierz płeć</label>*/}
-                        {/*<select className="form-control" >*/}
-                            {/*<option>Mężczyzna</option>*/}
-                            {/*<option>Kobieta</option>*/}
-                        {/*</select>*/}
-                    {/*</div>*/}
-                    {/*<div className="form-group">*/}
-                        {/*<label>Miasto</label>*/}
-                        {/*<input className="form-control form-control-lg" type="text" placeholder="Wpisz miasto" ></input>*/}
-                    {/*</div>*/}
-                    {/*<div className="form-group">*/}
-                        {/*<label>Kraj</label>*/}
-                        {/*<input className="form-control form-control-lg" type="text" placeholder="Wpisz państwo" ></input>*/}
-                    {/*</div>*/}
-                    {/*<button type="submit" className="btn btn-primary" onSubmit={this.handleSubmit}>Dodaj</button>*/}
-                {/*</form>*/}
             </div>
         );
     }
