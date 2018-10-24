@@ -24,6 +24,7 @@ class UserInfo extends React.Component{
     if (this.props.show ==! false){
         return (
             <div>
+                <h3>Informacje o użytkowniku</h3>
                 <div className="table-responsive">
                     <table className="table">
                         <thead>
