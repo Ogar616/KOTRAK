@@ -23383,7 +23383,7 @@ var AddForm = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     'form',
-                    { className: 'form-control form-control-lg', onSubmit: this.handleFormSubmit },
+                    { className: 'form-group', onSubmit: this.handleFormSubmit },
                     _react2.default.createElement(_input2.default, { type: 'text',
                         title: 'Imię',
                         name: 'imie',

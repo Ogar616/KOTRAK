@@ -95,7 +95,7 @@ class AddForm extends React.Component{
         return (
             <div>
                 <h3>Dodaj użytkownika</h3>
-                <form className="form-control form-control-lg" onSubmit={this.handleFormSubmit}>
+                <form className="form-group" onSubmit={this.handleFormSubmit}>
                     <Input type={'text'}
                            title= {'Imię'}
                            name= {'imie'}
