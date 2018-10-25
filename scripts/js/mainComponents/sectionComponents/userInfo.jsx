@@ -41,7 +41,7 @@ class UserInfo extends React.Component{
                         </thead>
                         <tbody>
                         <tr>
-                            <td key={this.props.users[this.props.chosenUser].index}>{this.props.users[this.props.chosenUser].index}</td>
+                            <td key={this.props.chosenUser}>{this.props.chosenUser}</td>
                             <td>{this.props.users[this.props.chosenUser].firstName}</td>
                             <td>{this.props.users[this.props.chosenUser].lastName}</td>
                             <td>{this.props.users[this.props.chosenUser].city}</td>

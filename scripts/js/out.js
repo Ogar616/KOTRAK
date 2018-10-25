@@ -23335,8 +23335,8 @@ var UserInfo = function (_React$Component) {
                                     null,
                                     _react2.default.createElement(
                                         "td",
-                                        { key: this.props.users[this.props.chosenUser].index },
-                                        this.props.users[this.props.chosenUser].index
+                                        { key: this.props.chosenUser },
+                                        this.props.chosenUser
                                     ),
                                     _react2.default.createElement(
                                         "td",
