@@ -36,9 +36,13 @@ class Section extends React.Component {
     };
 
     deleteUser = i => {
-        let users = this.state.users;
-        users.splice(i, 1);
-        this.setState({users: users});
+        if ((this.state.showUser && this.state.showEditUser && this.state.showUser) !== false){
+            let users = this.state.users;
+            users.splice(i, 1);
+            this.setState({users: users});
+        }
+        else window.alert("Nie możesz usuwać użytkowników w trakcie wyświetlania informacji/edycji/dodawania nowego");
+
     };
 
 

@@ -22917,9 +22917,11 @@ var Section = function (_React$Component) {
         };
 
         _this.deleteUser = function (i) {
-            var users = _this.state.users;
-            users.splice(i, 1);
-            _this.setState({ users: users });
+            if ((_this.state.showUser && _this.state.showEditUser && _this.state.showUser) !== false) {
+                var users = _this.state.users;
+                users.splice(i, 1);
+                _this.setState({ users: users });
+            } else window.alert("Nie możesz usuwać użytkowników w trakcie wyświetlania informacji/edycji/dodawania nowego");
         };
 
         _this.addUser = function (user) {
