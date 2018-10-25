@@ -8,7 +8,7 @@ class EditForm extends React.Component{
         super(props);
         this.state = {
             newUser: {
-                name: '',
+                firstName: '',
                 lastName: '',
                 country: '',
                 city: '',
@@ -22,41 +22,47 @@ class EditForm extends React.Component{
         this.handleCity = this.handleCity.bind(this);
         this.handleCountry = this.handleCountry.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
+
     }
 
-    handleFirstName(e) {
+    handleFormSubmit = e => {
+        e.preventDefault();
+        this.props.editUser(this.state.newUser, this.props.chosenUser)
+    };
+
+    handleFirstName = e => {
         let value = e.target.value;
         this.setState( prevState => ({ newUser :
-                {...prevState.newUser, name: value
+                {...prevState.newUser, firstName: value
                 }
         }));
-    }
+    };
 
-    handleLastName(e) {
+    handleLastName = e => {
         let value = e.target.value;
         this.setState( prevState => ({ newUser :
                 {...prevState.newUser, lastName: value
                 }
         }));
-    }
+    };
 
-    handleCity(e) {
+    handleCity = e => {
         let value = e.target.value;
         this.setState( prevState => ({ newUser :
                 {...prevState.newUser, city: value
                 }
         }));
-    }
+    };
 
-    handleCountry(e) {
+    handleCountry = e => {
         let value = e.target.value;
         this.setState( prevState => ({ newUser :
                 {...prevState.newUser, country: value
                 }
         }));
-    }
+    };
 
-    handleSelect(e) {
+    handleSelect = e => {
         let value = e.target.value;
         let name = e.target.name;
         this.setState( prevState => {
@@ -67,11 +73,10 @@ class EditForm extends React.Component{
                 }
             }, () => console.log(this.state.newUser)
         )
-    }
+    };
 
 
     render() {
-        const nameValue = "";
         return (
             <div>
                 <h3>Edycja użytkownika</h3>
@@ -79,7 +84,7 @@ class EditForm extends React.Component{
                     <Input type={'text'}
                            title= {'Imię'}
                            name= {'imie'}
-                           value={this.state.newUser.name}
+                           value={this.state.newUser.firstName}
                            placeholder = {this.props.firstName}
                            handleChange = {this.handleFirstName}
                     />

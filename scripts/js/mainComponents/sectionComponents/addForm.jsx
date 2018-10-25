@@ -8,7 +8,7 @@ class AddForm extends React.Component{
         super(props);
         this.state = {
             newUser: {
-                name: '',
+                firstName: '',
                 lastName: '',
                 country: '',
                 city: '',
@@ -25,46 +25,45 @@ class AddForm extends React.Component{
     }
 
 
-    handleFormSubmit(e) {
+    handleFormSubmit = e => {
         e.preventDefault();
-        let userData = this.state.newUser;
-        return userData;
+        this.props.newUser(this.state.newUser)
 
-    }
+    };
 
-    handleFirstName(e) {
+    handleFirstName = e => {
         let value = e.target.value;
         this.setState( prevState => ({ newUser :
-                {...prevState.newUser, name: value
+                {...prevState.newUser, firstName: value
                 }
         }));
-    }
+    };
 
-    handleLastName(e) {
+    handleLastName = e => {
         let value = e.target.value;
         this.setState( prevState => ({ newUser :
                 {...prevState.newUser, lastName: value
                 }
         }));
-    }
+    };
 
-    handleCity(e) {
+    handleCity = e => {
         let value = e.target.value;
         this.setState( prevState => ({ newUser :
                 {...prevState.newUser, city: value
                 }
         }));
-    }
+    };
 
-    handleCountry(e) {
+    handleCountry = e => {
         let value = e.target.value;
         this.setState( prevState => ({ newUser :
                 {...prevState.newUser, country: value
                 }
         }));
-    }
+    };
 
-    handleSelect(e) {
+    handleSelect = e => {
         let value = e.target.value;
         let name = e.target.name;
         this.setState( prevState => {
@@ -75,7 +74,7 @@ class AddForm extends React.Component{
                 }
             }, () => console.log(this.state.newUser)
         )
-    }
+    };
 
     render() {
         return (
@@ -85,7 +84,7 @@ class AddForm extends React.Component{
                     <Input type={'text'}
                            title= {'Imię'}
                            name= {'imie'}
-                           value={this.state.newUser.name}
+                           value={this.state.newUser.firstName}
                            placeholder = {'Wpisz imię'}
                            handleChange = {this.handleFirstName}
                     />
@@ -117,11 +116,12 @@ class AddForm extends React.Component{
                             placeholder = {'Wpisz państwo'}
                             handleChange = {this.handleCountry}
                     />
-                    <Button title="Dodaj" onClick={this.props.newUser.bind(null, this.state.newUser)}/>
+                    <Button title="Dodaj" onClick={this.handleFormSubmit}/>
                 </form>
             </div>
         );
     }
+// (this.state.newUser.name, this.state.newUser.lastName, this.state.newUser.gender, this.state.newUser.city, this.state.newUser.country)
 
 }
 

@@ -23054,32 +23054,28 @@ var Section = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Section.__proto__ || Object.getPrototypeOf(Section)).call(this, props));
 
-        _this.editUser = function (index, name) {
-            var users = _this.state.users;
-            users[index].firstName = name;
-            _this.setState({ users: users });
-        };
-
         _this.handleSubmit = function () {
             event.preventDefault();
         };
 
         _this.deleteUser = function (i) {
             if (_this.state.showAddUser === false && _this.state.showUser === false && _this.state.showEditUser === false) {
-                var users = _this.state.users;
-                users.splice(i, 1);
-                _this.setState({ users: users });
+                if (confirm("Czy jesteś pewny, że chcesz usunąć użytkownika " + _this.state.users[i].firstName + " " + _this.state.users[i].lastName + " ?")) {
+                    var users = _this.state.users;
+                    users.splice(i, 1);
+                    _this.setState({ users: users });
+                }
             } else window.alert("Nie możesz usuwać użytkowników w trakcie wyświetlania informacji/edycji/dodawania nowego");
         };
 
-        _this.addUser = function (user) {
-            // let users = this.state.users;
-            // users.push(user);
-            // this.setState({users: users})
+        _this.addUser = function (newUser) {
+            var users = _this.state.users;
+            users.push(newUser);
+            _this.setState({ users: users });
         };
 
         _this.showUserInfo = function (i) {
-            _this.setState({ showUser: _this.state.showUser === true ? false : true, addUser: false, showEditUser: false, chosenUser: i });
+            _this.setState({ showUser: _this.state.showUser === true ? false : true, addUser: false, showEditUser: false, chosenUser: i, showAddUser: false });
         };
 
         _this.showEditForm = function (i) {
@@ -23090,8 +23086,14 @@ var Section = function (_React$Component) {
             _this.setState({ showAddUser: _this.state.showAddUser === true ? false : true, showUser: false, showEditUser: false });
         };
 
+        _this.editUser = function (user, i) {
+            var users = _this.state.users;
+            users[i] = user;
+            _this.setState({ users: users });
+        };
+
         _this.state = {
-            users: [{ firstName: "Kamil", lastName: "Sobczyk", city: "Zabrze", country: "Polska", sex: "Mężczyzna" }, { firstName: "Adam", lastName: "Adamowicz", city: "Sydney", country: "Australia", sex: "Mężczyzna" }, { firstName: "Anna", lastName: "Malinowska", city: "Waszyngton", country: "USA", sex: "Kobieta" }],
+            users: [{ firstName: "Damian", lastName: "Wok", city: "Zabrze", country: "Polska", sex: "Mężczyzna" }, { firstName: "Adam", lastName: "Adamowicz", city: "Sydney", country: "Australia", sex: "Mężczyzna" }, { firstName: "Anna", lastName: "Malinowska", city: "Waszyngton", country: "USA", sex: "Kobieta" }, { firstName: "Marek", lastName: "Marko", city: "Rio de Janeiro", country: "Brazylia", sex: "Kobieta" }],
             showUser: false,
             showAddUser: false,
             showEditUser: false,
@@ -23118,7 +23120,9 @@ var Section = function (_React$Component) {
             }
 
             if (this.state.showAddUser !== false) {
-                showed = _react2.default.createElement(_addForm2.default, { newUser: this.addUser });
+                showed = _react2.default.createElement(_addForm2.default, { newUser: function newUser(e) {
+                        return _this2.addUser(e);
+                    } });
             }
             if (this.state.showEditUser !== false) {
                 showed = _react2.default.createElement(_editForm2.default, { chosenUser: this.state.chosenUser,
@@ -23127,7 +23131,10 @@ var Section = function (_React$Component) {
                     lastName: this.state.users[this.state.chosenUser].lastName,
                     city: this.state.users[this.state.chosenUser].city,
                     country: this.state.users[this.state.chosenUser].country,
-                    gender: this.state.users[this.state.chosenUser].gender
+                    gender: this.state.users[this.state.chosenUser].gender,
+                    editUser: function editUser(e, i) {
+                        return _this2.editUser(e, i);
+                    }
                 });
             }
 
@@ -23144,7 +23151,7 @@ var Section = function (_React$Component) {
                         'div',
                         { className: 'list-group-item list-group-item-action active' },
                         'Lista u\u017Cytkownik\xF3w',
-                        this.state.newUser
+                        console.log(this.state.newUser)
                     ),
                     users.map(function (u, i) {
                         return _react2.default.createElement(
@@ -23429,9 +23436,62 @@ var AddForm = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (AddForm.__proto__ || Object.getPrototypeOf(AddForm)).call(this, props));
 
+        _this.handleFormSubmit = function (e) {
+            e.preventDefault();
+            _this.props.newUser(_this.state.newUser);
+        };
+
+        _this.handleFirstName = function (e) {
+            var value = e.target.value;
+            _this.setState(function (prevState) {
+                return { newUser: _extends({}, prevState.newUser, { firstName: value
+                    })
+                };
+            });
+        };
+
+        _this.handleLastName = function (e) {
+            var value = e.target.value;
+            _this.setState(function (prevState) {
+                return { newUser: _extends({}, prevState.newUser, { lastName: value
+                    })
+                };
+            });
+        };
+
+        _this.handleCity = function (e) {
+            var value = e.target.value;
+            _this.setState(function (prevState) {
+                return { newUser: _extends({}, prevState.newUser, { city: value
+                    })
+                };
+            });
+        };
+
+        _this.handleCountry = function (e) {
+            var value = e.target.value;
+            _this.setState(function (prevState) {
+                return { newUser: _extends({}, prevState.newUser, { country: value
+                    })
+                };
+            });
+        };
+
+        _this.handleSelect = function (e) {
+            var value = e.target.value;
+            var name = e.target.name;
+            _this.setState(function (prevState) {
+                return {
+                    newUser: _extends({}, prevState.newUser, _defineProperty({}, name, value))
+                };
+            }, function () {
+                return console.log(_this.state.newUser);
+            });
+        };
+
         _this.state = {
             newUser: {
-                name: '',
+                firstName: '',
                 lastName: '',
                 country: '',
                 city: '',
@@ -23449,68 +23509,6 @@ var AddForm = function (_React$Component) {
     }
 
     _createClass(AddForm, [{
-        key: 'handleFormSubmit',
-        value: function handleFormSubmit(e) {
-            e.preventDefault();
-            var userData = this.state.newUser;
-            return userData;
-        }
-    }, {
-        key: 'handleFirstName',
-        value: function handleFirstName(e) {
-            var value = e.target.value;
-            this.setState(function (prevState) {
-                return { newUser: _extends({}, prevState.newUser, { name: value
-                    })
-                };
-            });
-        }
-    }, {
-        key: 'handleLastName',
-        value: function handleLastName(e) {
-            var value = e.target.value;
-            this.setState(function (prevState) {
-                return { newUser: _extends({}, prevState.newUser, { lastName: value
-                    })
-                };
-            });
-        }
-    }, {
-        key: 'handleCity',
-        value: function handleCity(e) {
-            var value = e.target.value;
-            this.setState(function (prevState) {
-                return { newUser: _extends({}, prevState.newUser, { city: value
-                    })
-                };
-            });
-        }
-    }, {
-        key: 'handleCountry',
-        value: function handleCountry(e) {
-            var value = e.target.value;
-            this.setState(function (prevState) {
-                return { newUser: _extends({}, prevState.newUser, { country: value
-                    })
-                };
-            });
-        }
-    }, {
-        key: 'handleSelect',
-        value: function handleSelect(e) {
-            var _this2 = this;
-
-            var value = e.target.value;
-            var name = e.target.name;
-            this.setState(function (prevState) {
-                return {
-                    newUser: _extends({}, prevState.newUser, _defineProperty({}, name, value))
-                };
-            }, function () {
-                return console.log(_this2.state.newUser);
-            });
-        }
-    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -23527,7 +23525,7 @@ var AddForm = function (_React$Component) {
                     _react2.default.createElement(_input2.default, { type: 'text',
                         title: 'Imię',
                         name: 'imie',
-                        value: this.state.newUser.name,
+                        value: this.state.newUser.firstName,
                         placeholder: 'Wpisz imię',
                         handleChange: this.handleFirstName
                     }),
@@ -23559,10 +23557,12 @@ var AddForm = function (_React$Component) {
                         placeholder: 'Wpisz państwo',
                         handleChange: this.handleCountry
                     }),
-                    _react2.default.createElement(_button2.default, { title: 'Dodaj', onClick: this.props.newUser.bind(null, this.state.newUser) })
+                    _react2.default.createElement(_button2.default, { title: 'Dodaj', onClick: this.handleFormSubmit })
                 )
             );
         }
+        // (this.state.newUser.name, this.state.newUser.lastName, this.state.newUser.gender, this.state.newUser.city, this.state.newUser.country)
+
     }]);
 
     return AddForm;
@@ -23619,9 +23619,62 @@ var EditForm = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (EditForm.__proto__ || Object.getPrototypeOf(EditForm)).call(this, props));
 
+        _this.handleFormSubmit = function (e) {
+            e.preventDefault();
+            _this.props.editUser(_this.state.newUser, _this.props.chosenUser);
+        };
+
+        _this.handleFirstName = function (e) {
+            var value = e.target.value;
+            _this.setState(function (prevState) {
+                return { newUser: _extends({}, prevState.newUser, { firstName: value
+                    })
+                };
+            });
+        };
+
+        _this.handleLastName = function (e) {
+            var value = e.target.value;
+            _this.setState(function (prevState) {
+                return { newUser: _extends({}, prevState.newUser, { lastName: value
+                    })
+                };
+            });
+        };
+
+        _this.handleCity = function (e) {
+            var value = e.target.value;
+            _this.setState(function (prevState) {
+                return { newUser: _extends({}, prevState.newUser, { city: value
+                    })
+                };
+            });
+        };
+
+        _this.handleCountry = function (e) {
+            var value = e.target.value;
+            _this.setState(function (prevState) {
+                return { newUser: _extends({}, prevState.newUser, { country: value
+                    })
+                };
+            });
+        };
+
+        _this.handleSelect = function (e) {
+            var value = e.target.value;
+            var name = e.target.name;
+            _this.setState(function (prevState) {
+                return {
+                    newUser: _extends({}, prevState.newUser, _defineProperty({}, name, value))
+                };
+            }, function () {
+                return console.log(_this.state.newUser);
+            });
+        };
+
         _this.state = {
             newUser: {
-                name: '',
+                firstName: '',
                 lastName: '',
                 country: '',
                 city: '',
@@ -23635,68 +23688,13 @@ var EditForm = function (_React$Component) {
         _this.handleCity = _this.handleCity.bind(_this);
         _this.handleCountry = _this.handleCountry.bind(_this);
         _this.handleSelect = _this.handleSelect.bind(_this);
+
         return _this;
     }
 
     _createClass(EditForm, [{
-        key: 'handleFirstName',
-        value: function handleFirstName(e) {
-            var value = e.target.value;
-            this.setState(function (prevState) {
-                return { newUser: _extends({}, prevState.newUser, { name: value
-                    })
-                };
-            });
-        }
-    }, {
-        key: 'handleLastName',
-        value: function handleLastName(e) {
-            var value = e.target.value;
-            this.setState(function (prevState) {
-                return { newUser: _extends({}, prevState.newUser, { lastName: value
-                    })
-                };
-            });
-        }
-    }, {
-        key: 'handleCity',
-        value: function handleCity(e) {
-            var value = e.target.value;
-            this.setState(function (prevState) {
-                return { newUser: _extends({}, prevState.newUser, { city: value
-                    })
-                };
-            });
-        }
-    }, {
-        key: 'handleCountry',
-        value: function handleCountry(e) {
-            var value = e.target.value;
-            this.setState(function (prevState) {
-                return { newUser: _extends({}, prevState.newUser, { country: value
-                    })
-                };
-            });
-        }
-    }, {
-        key: 'handleSelect',
-        value: function handleSelect(e) {
-            var _this2 = this;
-
-            var value = e.target.value;
-            var name = e.target.name;
-            this.setState(function (prevState) {
-                return {
-                    newUser: _extends({}, prevState.newUser, _defineProperty({}, name, value))
-                };
-            }, function () {
-                return console.log(_this2.state.newUser);
-            });
-        }
-    }, {
         key: 'render',
         value: function render() {
-            var nameValue = "";
             return _react2.default.createElement(
                 'div',
                 null,
@@ -23711,7 +23709,7 @@ var EditForm = function (_React$Component) {
                     _react2.default.createElement(_input2.default, { type: 'text',
                         title: 'Imię',
                         name: 'imie',
-                        value: this.state.newUser.name,
+                        value: this.state.newUser.firstName,
                         placeholder: this.props.firstName,
                         handleChange: this.handleFirstName
                     }),

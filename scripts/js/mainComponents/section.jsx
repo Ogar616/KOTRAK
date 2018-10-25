@@ -8,9 +8,10 @@ class Section extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            users: [{firstName: "Kamil", lastName: "Sobczyk", city: "Zabrze", country: "Polska", sex: "Mężczyzna"},
+            users: [{firstName: "Damian", lastName: "Wok", city: "Zabrze", country: "Polska", sex: "Mężczyzna"},
                 {firstName: "Adam", lastName: "Adamowicz", city: "Sydney", country: "Australia", sex: "Mężczyzna"},
-                {firstName: "Anna", lastName: "Malinowska", city: "Waszyngton", country: "USA", sex: "Kobieta"}],
+                {firstName: "Anna", lastName: "Malinowska", city: "Waszyngton", country: "USA", sex: "Kobieta"},
+                {firstName: "Marek", lastName: "Marko", city: "Rio de Janeiro", country: "Brazylia", sex: "Kobieta"}],
             showUser: false,
             showAddUser: false,
             showEditUser: false,
@@ -20,35 +21,30 @@ class Section extends React.Component {
         this.addUser = this.addUser.bind(this);
     }
 
-
-    editUser = (index, name) => {
-        let users = this.state.users;
-        users[index].firstName = name;
-        this.setState({users: users})
-    };
-
     handleSubmit = () => {
         event.preventDefault();
     };
 
     deleteUser = i => {
         if (this.state.showAddUser === false && this.state.showUser === false && this.state.showEditUser === false){
-            let users = this.state.users;
-            users.splice(i, 1);
-            this.setState({users: users});
+            if (confirm("Czy jesteś pewny, że chcesz usunąć użytkownika " + this.state.users[i].firstName + " " + this.state.users[i].lastName + " ?")){
+                let users = this.state.users;
+                users.splice(i, 1);
+                this.setState({users: users});
+            }
         }
         else window.alert("Nie możesz usuwać użytkowników w trakcie wyświetlania informacji/edycji/dodawania nowego");
 
     };
 
-    addUser = user => {
-        // let users = this.state.users;
-        // users.push(user);
-        // this.setState({users: users})
+    addUser = newUser => {
+        let users = this.state.users;
+        users.push(newUser);
+        this.setState({users: users})
     };
 
     showUserInfo = i => {
-        this.setState({showUser: this.state.showUser === true ? false : true, addUser: false, showEditUser: false, chosenUser: i})
+        this.setState({showUser: this.state.showUser === true ? false : true, addUser: false, showEditUser: false, chosenUser: i, showAddUser: false})
     };
 
     showEditForm = i => {
@@ -59,8 +55,11 @@ class Section extends React.Component {
         this.setState({showAddUser: this.state.showAddUser === true ? false : true, showUser: false, showEditUser: false})
     };
 
-
-
+    editUser = (user, i) => {
+        let users = this.state.users;
+        users[i] = user;
+        this.setState({users: users})
+    };
 
     render() {
         let showed = null;
@@ -74,16 +73,17 @@ class Section extends React.Component {
         }
 
         if (this.state.showAddUser !== false){
-            showed = <AddForm newUser={this.addUser}/>;
+            showed = <AddForm newUser={e => this.addUser(e)}/>;
         }
         if (this.state.showEditUser !== false){
-            showed = <EditForm chosenUser={this.state.chosenUser}
-                               users={this.state.users}
+            showed = <EditForm  chosenUser={this.state.chosenUser}
+                                users={this.state.users}
                                 firstName={this.state.users[this.state.chosenUser].firstName}
                                 lastName={this.state.users[this.state.chosenUser].lastName}
                                 city={this.state.users[this.state.chosenUser].city}
                                 country={this.state.users[this.state.chosenUser].country}
                                 gender={this.state.users[this.state.chosenUser].gender}
+                                editUser={(e, i) => this.editUser(e, i)}
             />
         }
 
@@ -94,7 +94,7 @@ class Section extends React.Component {
                 <div className="list-group">
                     <div className="list-group-item list-group-item-action active">
                         Lista użytkowników
-                        {this.state.newUser}
+                        {console.log(this.state.newUser)}
                     </div>
                     {users.map((u, i) => (
                             <div className="list-group-item list-group-item-action" key={i}>{u.firstName + " " + u.lastName}
