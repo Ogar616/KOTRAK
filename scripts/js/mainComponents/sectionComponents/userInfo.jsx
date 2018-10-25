@@ -35,8 +35,8 @@ class UserInfo extends React.Component{
                             <th>Miasto</th>
                             <th>Kraj</th>
                             <th>Pleć</th>
-                            <th>Temperatura</th>
-                            <th>Wilgotność</th>
+                            <th>Temperatura w &deg;C</th>
+                            <th>Wilgotność w %</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,7 +47,7 @@ class UserInfo extends React.Component{
                             <td>{this.props.users[this.props.chosenUser].city}</td>
                             <td>{this.props.users[this.props.chosenUser].country}</td>
                             <td>{this.props.users[this.props.chosenUser].sex}</td>
-                            <td>{this.state.temp}</td>
+                            <td>{Math.floor((this.state.temp -32) * 5/9)}</td>
                             <td>{this.state.humidity}</td>
                         </tr>
                         </tbody>

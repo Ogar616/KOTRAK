@@ -46,7 +46,7 @@ class Section extends React.Component {
     addUser = user => {
         // let users = this.state.users;
         // users.push(user);
-        // this.setState({users: users})
+        // this.setState({users: users})W
     };
 
     editUser = (firstName, lastName, city, country, sex, i) => {
@@ -85,7 +85,13 @@ class Section extends React.Component {
         }
         if (this.state.showEditUser !== false){
             showed = <EditForm chosenUser={this.state.chosenUser}
-                               users={this.state.users}/>
+                               users={this.state.users}
+                                firstName={this.state.users[this.state.chosenUser].firstName}
+                                lastName={this.state.users[this.state.chosenUser].lastName}
+                                city={this.state.users[this.state.chosenUser].city}
+                                country={this.state.users[this.state.chosenUser].country}
+                                gender={this.state.users[this.state.chosenUser].gender}
+            />
         }
 
         const { users } = this.state;

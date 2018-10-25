@@ -1,7 +1,7 @@
 import React from 'react';
-import Input from './addFormComponents/input.jsx'
-import Select from './addFormComponents/select.jsx'
-import Button from './addFormComponents/button.jsx'
+import Input from './formComponents/input.jsx'
+import Select from './formComponents/select.jsx'
+import Button from './formComponents/button.jsx'
 
 class AddForm extends React.Component{
     constructor(props) {
@@ -21,12 +21,27 @@ class AddForm extends React.Component{
         this.handleLastName = this.handleLastName.bind(this);
         this.handleCity = this.handleCity.bind(this);
         this.handleCountry = this.handleCountry.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     }
 
 
     handleFormSubmit(e) {
         e.preventDefault();
-        console.log("works");
+        let userData = this.state.newUser;
+        //
+        // console.log("works");
+        // fetch('http://127.0.0.1:8081/myProjects/KOTRAK/data.json',{
+        //     method: "POST",
+        //     body: JSON.stringify(userData),
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        // }).then(response => {
+        //     response.json().then(data =>{
+        //         console.log("Successful" + data);
+        //     })
+        // })
     }
 
     handleFirstName(e) {
@@ -61,7 +76,7 @@ class AddForm extends React.Component{
         }));
     }
 
-    handleInput(e) {
+    handleSelect(e) {
         let value = e.target.value;
         let name = e.target.name;
         this.setState( prevState => {
@@ -88,7 +103,7 @@ class AddForm extends React.Component{
                     />
                     <Input type={'text'}
                            title= {'Nazwisko'}
-                           name= {'Nazwiskoddd'}
+                           name= {'Nazwisko'}
                            value={this.state.newUser.lastName}
                            placeholder = {'Wpisz nazwisko'}
                            handleChange = {this.handleLastName}
@@ -98,23 +113,23 @@ class AddForm extends React.Component{
                             options = {this.state.genderOptions}
                             value = {this.state.newUser.gender}
                             placeholder = {'Wybierz płeć'}
-                            handleChange = {this.handleInput}
+                            handleChange = {this.handleSelect}
                     />
                     <Input type={'text'}
                            title= {'Miasto'}
                            name= {'miasto'}
-                           value={this.state.newUser.name}
+                           value={this.state.newUser.city}
                            placeholder = {'Wpisz miasto'}
                            handleChange = {this.handleCity}
                     />
                     <Input type={'text'}
                             title= {'Państwo'}
                             name= {'panstwo'}
-                            value={this.state.newUser.name}
+                            value={this.state.newUser.country}
                             placeholder = {'Wpisz państwo'}
                             handleChange = {this.handleCountry}
                     />
-                    <Button title="Dodaj" onClick={this.props.submit(this.state.newUser)}/>
+                    <Button title="Dodaj" onClick={this.handleFormSubmit}/>
                 </form>
             </div>
         );
