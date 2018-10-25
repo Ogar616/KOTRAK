@@ -71,8 +71,7 @@ class EditForm extends React.Component{
                         ...prevState.newUser, [name]: value
                     }
                 }
-            }, () => console.log(this.state.newUser)
-        )
+            })
     };
 
 

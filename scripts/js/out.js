@@ -23484,8 +23484,6 @@ var AddForm = function (_React$Component) {
                 return {
                     newUser: _extends({}, prevState.newUser, _defineProperty({}, name, value))
                 };
-            }, function () {
-                return console.log(_this.state.newUser);
             });
         };
 
@@ -23667,8 +23665,6 @@ var EditForm = function (_React$Component) {
                 return {
                     newUser: _extends({}, prevState.newUser, _defineProperty({}, name, value))
                 };
-            }, function () {
-                return console.log(_this.state.newUser);
             });
         };
 
