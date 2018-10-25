@@ -8,22 +8,18 @@ class Section extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            users: [{index: 0, firstName: "Kamil", lastName: "Sobczyk", city: "Zabrze", country: "Polska", sex: "Mężczyzna"},
-                {index: 1, firstName: "Adam", lastName: "Adamowicz", city: "Sydney", country: "Australia", sex: "Mężczyzna"},
-                {index: 2, firstName: "Anna", lastName: "Malinowska", city: "Gdańsk", country: "Polska", sex: "Kobieta"}],
+            users: [{firstName: "Kamil", lastName: "Sobczyk", city: "Zabrze", country: "Polska", sex: "Mężczyzna"},
+                {firstName: "Adam", lastName: "Adamowicz", city: "Sydney", country: "Australia", sex: "Mężczyzna"},
+                {firstName: "Anna", lastName: "Malinowska", city: "Waszyngton", country: "USA", sex: "Kobieta"}],
             showUser: false,
             showAddUser: false,
             showEditUser: false,
-            chosenUser: 0
+            chosenUser: 0,
+            newUser: null
         };
         this.addUser = this.addUser.bind(this);
     }
 
-    setName = (event) => {
-        let user = this.state.newUser;
-        user.firstName = event.target.value;
-        this.setState({newUser: user})
-    };
 
     editUser = (index, name) => {
         let users = this.state.users;
@@ -36,7 +32,7 @@ class Section extends React.Component {
     };
 
     deleteUser = i => {
-        if ((this.state.showUser && this.state.showEditUser && this.state.showUser) !== false){
+        if (this.state.showAddUser === false && this.state.showUser === false && this.state.showEditUser === false){
             let users = this.state.users;
             users.splice(i, 1);
             this.setState({users: users});
@@ -45,17 +41,10 @@ class Section extends React.Component {
 
     };
 
-
-
     addUser = user => {
         // let users = this.state.users;
         // users.push(user);
-        // this.setState({users: users})W
-    };
-
-    editUser = (firstName, lastName, city, country, sex, i) => {
-        let users = this.state.users;
-
+        // this.setState({users: users})
     };
 
     showUserInfo = i => {
@@ -85,7 +74,7 @@ class Section extends React.Component {
         }
 
         if (this.state.showAddUser !== false){
-            showed = <AddForm submit={this.addUser()}/>;
+            showed = <AddForm newUser={this.addUser}/>;
         }
         if (this.state.showEditUser !== false){
             showed = <EditForm chosenUser={this.state.chosenUser}
@@ -105,6 +94,7 @@ class Section extends React.Component {
                 <div className="list-group">
                     <div className="list-group-item list-group-item-action active">
                         Lista użytkowników
+                        {this.state.newUser}
                     </div>
                     {users.map((u, i) => (
                             <div className="list-group-item list-group-item-action" key={i}>{u.firstName + " " + u.lastName}

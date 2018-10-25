@@ -28,20 +28,8 @@ class AddForm extends React.Component{
     handleFormSubmit(e) {
         e.preventDefault();
         let userData = this.state.newUser;
-        //
-        // console.log("works");
-        // fetch('http://127.0.0.1:8081/myProjects/KOTRAK/data.json',{
-        //     method: "POST",
-        //     body: JSON.stringify(userData),
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        // }).then(response => {
-        //     response.json().then(data =>{
-        //         console.log("Successful" + data);
-        //     })
-        // })
+        return userData;
+
     }
 
     handleFirstName(e) {
@@ -129,7 +117,7 @@ class AddForm extends React.Component{
                             placeholder = {'Wpisz państwo'}
                             handleChange = {this.handleCountry}
                     />
-                    <Button title="Dodaj" onClick={this.handleFormSubmit}/>
+                    <Button title="Dodaj" onClick={this.props.newUser.bind(null, this.state.newUser)}/>
                 </form>
             </div>
         );
