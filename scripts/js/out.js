@@ -22976,7 +22976,7 @@ var Nav = function (_React$Component) {
                             { className: "navbar-nav mr-auto" },
                             _react2.default.createElement(
                                 "li",
-                                { className: "nav-item active" },
+                                { className: "nav-item" },
                                 _react2.default.createElement(
                                     "a",
                                     { className: "nav-link", href: "#" },
@@ -22990,7 +22990,7 @@ var Nav = function (_React$Component) {
                             ),
                             _react2.default.createElement(
                                 "li",
-                                { className: "nav-item" },
+                                { className: "nav-item active" },
                                 _react2.default.createElement(
                                     "a",
                                     { className: "nav-link", href: "#" },
@@ -23787,9 +23787,13 @@ var Footer = function (_React$Component) {
     }
 
     _createClass(Footer, [{
-        key: 'render',
+        key: "render",
         value: function render() {
-            return _react2.default.createElement('div', null);
+            return _react2.default.createElement(
+                "div",
+                { className: "container footer" },
+                "Zadanie rekrutacyjne dla firmy KOTRAK"
+            );
         }
     }]);
 
