@@ -23046,6 +23046,22 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var localJSON = "http://localhost:3000/users/";
+
+var deleteUser = function deleteUser(url) {
+    return fetch(url, {
+        method: "DELETE",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8"
+            // "Content-Type": "application/x-www-form-urlencoded",
+        }
+
+    }).then(function (response) {
+        return response.json();
+    });
+};
+
 var Section = function (_React$Component) {
     _inherits(Section, _React$Component);
 
@@ -23054,50 +23070,87 @@ var Section = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Section.__proto__ || Object.getPrototypeOf(Section)).call(this, props));
 
-        _this.handleSubmit = function () {
-            event.preventDefault();
+        _this.getUsers = function () {
+            fetch(localJSON).then(function (response) {
+                return response.json();
+            }).then(function (myJson) {
+                _this.setState({ users: myJson });
+            });
         };
 
-        _this.deleteUser = function (i) {
+        _this.editUser = function (user, i) {
+            return fetch(localJSON + i, {
+                method: "PUT",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                body: JSON.stringify(user)
+            }).then(function (response) {
+                response.json();
+                _this.setState({ showEditUser: false });
+            });
+        };
+
+        _this.addUser = function (newUser) {
+            return fetch(localJSON, {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                body: JSON.stringify(newUser)
+            }).then(function (response) {
+
+                response.json();
+                _this.setState({ showAddUser: false });
+            });
+        };
+
+        _this.deleteUser = function (i, id) {
             if (_this.state.showAddUser === false && _this.state.showUser === false && _this.state.showEditUser === false) {
                 if (confirm("Czy jesteś pewny, że chcesz usunąć użytkownika " + _this.state.users[i].firstName + " " + _this.state.users[i].lastName + " ?")) {
-                    var users = _this.state.users;
-                    users.splice(i, 1);
-                    _this.setState({ users: users });
+                    return fetch(localJSON + id, {
+                        method: "DELETE",
+                        mode: "cors",
+                        headers: {
+                            "Content-Type": "application/json; charset=utf-8"
+                        },
+                        body: JSON.stringify()
+
+                    }).then(function (response) {
+                        response.json();
+                    });
                 }
             } else window.alert("Nie możesz usuwać użytkowników w trakcie wyświetlania informacji/edycji/dodawania nowego");
         };
 
-        _this.addUser = function (newUser) {
-            var users = _this.state.users;
-            users.push(newUser);
-            _this.setState({ users: users });
+        _this.componentWillMount = function () {
+            _this.getUsers();
+        };
+
+        _this.handleSubmit = function () {
+            event.preventDefault();
         };
 
         _this.showUserInfo = function (i) {
-            _this.setState({ showUser: _this.state.showUser === true ? false : true, addUser: false, showEditUser: false, chosenUser: i, showAddUser: false });
+            _this.setState({ showUser: _this.state.showUser !== true, addUser: false, showEditUser: false, chosenUser: i, showAddUser: false });
         };
 
         _this.showEditForm = function (i) {
-            _this.setState({ showEditUser: _this.state.showEditUser === true ? false : true, showAddUser: false, showUser: false, chosenUser: i });
+            _this.setState({ showEditUser: _this.state.showEditUser !== true, showAddUser: false, showUser: false, chosenUser: i });
         };
 
         _this.showAddForm = function () {
-            _this.setState({ showAddUser: _this.state.showAddUser === true ? false : true, showUser: false, showEditUser: false });
-        };
-
-        _this.editUser = function (user, i) {
-            var users = _this.state.users;
-            users[i] = user;
-            _this.setState({ users: users });
+            _this.setState({ showAddUser: _this.state.showAddUser !== true, chosenUser: _this.state.users.length, showUser: false, showEditUser: false });
         };
 
         _this.state = {
-            users: [{ firstName: "Damian", lastName: "Wok", city: "Zabrze", country: "Polska", sex: "Mężczyzna" }, { firstName: "Adam", lastName: "Adamowicz", city: "Sydney", country: "Australia", sex: "Mężczyzna" }, { firstName: "Anna", lastName: "Malinowska", city: "Waszyngton", country: "USA", sex: "Kobieta" }, { firstName: "Marek", lastName: "Marko", city: "Rio de Janeiro", country: "Brazylia", sex: "Kobieta" }],
+            users: [],
             showUser: false,
             showAddUser: false,
             showEditUser: false,
-            chosenUser: 0,
+            chosenUser: 1,
             newUser: null
         };
         _this.addUser = _this.addUser.bind(_this);
@@ -23132,6 +23185,7 @@ var Section = function (_React$Component) {
                     city: this.state.users[this.state.chosenUser].city,
                     country: this.state.users[this.state.chosenUser].country,
                     gender: this.state.users[this.state.chosenUser].gender,
+                    id: this.state.users[this.state.chosenUser].id,
                     editUser: function editUser(e, i) {
                         return _this2.editUser(e, i);
                     }
@@ -23181,7 +23235,7 @@ var Section = function (_React$Component) {
                                 { type: 'button',
                                     className: 'delete',
                                     onClick: function onClick() {
-                                        return _this2.deleteUser(i);
+                                        return _this2.deleteUser(i, u.id);
                                     } },
                                 '-'
                             )
@@ -23494,6 +23548,7 @@ var AddForm = function (_React$Component) {
                 country: '',
                 city: '',
                 gender: ''
+
             },
             genderOptions: ['Kobieta', 'Mężczyzna']
         };
@@ -23559,8 +23614,6 @@ var AddForm = function (_React$Component) {
                 )
             );
         }
-        // (this.state.newUser.name, this.state.newUser.lastName, this.state.newUser.gender, this.state.newUser.city, this.state.newUser.country)
-
     }]);
 
     return AddForm;
@@ -23619,7 +23672,7 @@ var EditForm = function (_React$Component) {
 
         _this.handleFormSubmit = function (e) {
             e.preventDefault();
-            _this.props.editUser(_this.state.newUser, _this.props.chosenUser);
+            _this.props.editUser(_this.state.newUser, _this.props.id);
         };
 
         _this.handleFirstName = function (e) {

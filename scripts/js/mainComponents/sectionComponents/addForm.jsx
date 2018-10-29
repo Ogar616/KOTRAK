@@ -12,7 +12,8 @@ class AddForm extends React.Component{
                 lastName: '',
                 country: '',
                 city: '',
-                gender: ''
+                gender: '',
+             
             },
             genderOptions: ['Kobieta', 'Mężczyzna'],
         };
@@ -27,7 +28,9 @@ class AddForm extends React.Component{
 
     handleFormSubmit = e => {
         e.preventDefault();
-        this.props.newUser(this.state.newUser)
+        this.props.newUser(this.state.newUser);
+
+
 
     };
 
@@ -120,8 +123,6 @@ class AddForm extends React.Component{
             </div>
         );
     }
-// (this.state.newUser.name, this.state.newUser.lastName, this.state.newUser.gender, this.state.newUser.city, this.state.newUser.country)
-
 }
 
 export default AddForm;

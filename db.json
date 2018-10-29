@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "firstName": "Marek",
+      "lastName": "Marko",
+      "city": "Rio de Janeiro",
+      "country": "Brazylia",
+      "sex": "Mężczyzna",
+      "id": 1
+    },
+{
+      "firstName": "Maria",
+      "lastName": "Marecka",
+      "city": "Warszawa",
+      "country": "Polsa",
+      "sex": "Kobieta",
+      "id": 2
+    },
+{
+      "firstName": "Adam",
+      "lastName": "Adamowicz",
+      "city": "Moskwa",
+      "country": "Rosja",
+      "sex": "Mężczyzna",
+      "id": 3
+    },
+{
+      "firstName": "Jack",
+      "lastName": "Bloom",
+      "city": "Nowy Jork",
+      "country": "USA",
+      "sex": "Mężczyzna",
+      "id": 4
+    }
+  ]
+}

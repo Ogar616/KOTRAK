@@ -12,7 +12,7 @@ class EditForm extends React.Component{
                 lastName: '',
                 country: '',
                 city: '',
-                gender: ''
+                gender: '',
             },
             genderOptions: ['Kobieta', 'Mężczyzna'],
         };
@@ -27,7 +27,7 @@ class EditForm extends React.Component{
 
     handleFormSubmit = e => {
         e.preventDefault();
-        this.props.editUser(this.state.newUser, this.props.chosenUser)
+        this.props.editUser(this.state.newUser, this.props.id)
     };
 
     handleFirstName = e => {

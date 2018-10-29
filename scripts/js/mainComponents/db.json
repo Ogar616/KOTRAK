@@ -1,0 +1,5 @@
+{
+            "users": [{"firstName": "Damian", "lastName": "Wok", "city": "Zabrze", "country": "Polska", "sex": "Mężczyzna"},
+                {"firstName": "Adam", "lastName": "Adamowicz", "city": "Sydney", "country": "Australia", "sex": "Mężczyzna"},
+                {"firstName": "Anna", "lastName": "Malinowska", "city": "Waszyngton", "country": "USA", "sex": "Kobieta"},
+                {"firstName": "Marek", "lastName": "Marko", "city": "Rio de Janeiro", "country": "Brazylia", "sex": "Kobieta"}]}
