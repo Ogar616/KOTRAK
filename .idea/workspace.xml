@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="33c1892a-5fe9-4e85-9782-bee56abfff51" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/js/mainComponents/section.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/mainComponents/section.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/js/mainComponents/sectionComponents/addForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/mainComponents/sectionComponents/addForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/js/mainComponents/sectionComponents/editForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/mainComponents/sectionComponents/editForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/js/out.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/out.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/main.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -144,12 +144,12 @@
     <session id="2042867275">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.10" value="1" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -196,8 +196,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/js/mainComponents/section.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="27" column="63" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
+            <state relative-caret-position="342">
+              <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -364,16 +364,18 @@
       <workItem from="1540634137902" duration="12338000" />
       <workItem from="1540647428147" duration="5504000" />
       <workItem from="1540743451741" duration="619000" />
+      <workItem from="1541524128220" duration="10000" />
+      <workItem from="1541526376485" duration="599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98252000" />
+    <option name="totallyTimeSpent" value="98861000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="83" y="592" width="1837" height="1053" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27923894" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28651372" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -436,8 +438,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/js/mainComponents/section.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="63" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
+        <state relative-caret-position="342">
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

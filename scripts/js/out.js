@@ -23744,13 +23744,16 @@ var EditForm = function (_React$Component) {
     _createClass(EditForm, [{
         key: 'render',
         value: function render() {
+
             return _react2.default.createElement(
                 'div',
                 null,
                 _react2.default.createElement(
                     'h3',
                     null,
-                    'Edycja u\u017Cytkownika'
+                    'Edycja u\u017Cytkownika ',
+                    this.props.firstName + " " + this.props.lastName,
+                    ' - uzupe\u0142nij ka\u017Cd\u0105 rubryk\u0119  '
                 ),
                 _react2.default.createElement(
                     'form',

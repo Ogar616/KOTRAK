@@ -8,7 +8,7 @@
       "sex": "Mężczyzna",
       "id": 1
     },
-{
+    {
       "firstName": "Maria",
       "lastName": "Marecka",
       "city": "Warszawa",
@@ -16,7 +16,7 @@
       "sex": "Kobieta",
       "id": 2
     },
-{
+    {
       "firstName": "Adam",
       "lastName": "Adamowicz",
       "city": "Moskwa",
@@ -24,12 +24,12 @@
       "sex": "Mężczyzna",
       "id": 3
     },
-{
-      "firstName": "Jack",
-      "lastName": "Bloom",
-      "city": "Nowy Jork",
-      "country": "USA",
-      "sex": "Mężczyzna",
+    {
+      "firstName": "",
+      "lastName": "Rower",
+      "country": "",
+      "city": "",
+      "gender": "Kobieta",
       "id": 4
     }
   ]

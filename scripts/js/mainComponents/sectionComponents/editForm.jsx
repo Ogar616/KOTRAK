@@ -76,9 +76,10 @@ class EditForm extends React.Component{
 
 
     render() {
+       
         return (
             <div>
-                <h3>Edycja użytkownika</h3>
+                <h3>Edycja użytkownika {this.props.firstName + " " + this.props.lastName} - uzupełnij każdą rubrykę  </h3>
                 <form className="form-group" onSubmit={this.handleFormSubmit}>
                     <Input type={'text'}
                            title= {'Imię'}
